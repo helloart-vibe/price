@@ -37,6 +37,7 @@ function getEditorState(editor) {
     tech: editor.querySelector("[data-field='tech']").value,
     packageName: editor.querySelector("[data-field='package']").value,
     price: editor.querySelector("[data-field='price']").value,
+    oldPrice: editor.querySelector("[data-field='oldPrice']").value,
     date: editor.querySelector("[data-field='date']").value,
     engineering: editor.querySelector("[data-field='engineering']:checked").value,
   };
@@ -55,6 +56,9 @@ function renderTicket(index) {
   ticket.querySelector("[data-output='tech']").textContent = state.tech;
   ticket.querySelector("[data-output='package']").textContent = `«${cleanPackage(state.packageName)}»`;
   ticket.querySelector("[data-output='price']").textContent = state.price;
+  const oldPriceRow = ticket.querySelector("[data-output='old-price-row']");
+  ticket.querySelector("[data-output='oldPrice']").textContent = state.oldPrice;
+  oldPriceRow.hidden = !state.oldPrice.trim();
   ticket.querySelector("[data-output='date']").textContent = state.date;
   ticket.querySelector("[data-output='engineering']").innerHTML = engineeringText[state.engineering];
   ticket.querySelector("[data-output='qr']").src = project.qr;
@@ -71,7 +75,12 @@ function fitText(ticket) {
       { element: ticket.querySelector(".engineering-line"), max: 12, min: 7 },
       { element: ticket.querySelector(".date-line"), max: 12, min: 7 },
       { element: ticket.querySelector(".price-line strong"), max: 95, min: 52 },
+      { element: ticket.querySelector(".old-price-line strong"), max: 57, min: 32 },
     ].forEach(({ element, max, min }) => {
+      if (!element) {
+        return;
+      }
+
       element.style.fontSize = `${max}px`;
 
       while (element.scrollWidth > element.clientWidth && parseFloat(element.style.fontSize) > min) {

@@ -44,10 +44,16 @@
             <input data-field="package" type="text" value="Дачный стандарт" />
           </label>
 
-          <label class="field">
-            <span>Цена</span>
-            <input data-field="price" type="text" value="12 116 000" />
-          </label>
+          <div class="price-fields">
+            <label class="field">
+              <span>Цена</span>
+              <input data-field="price" type="text" value="12 116 000" />
+            </label>
+            <label class="field">
+              <span>Зачёркнутая</span>
+              <input data-field="oldPrice" type="text" placeholder="0" />
+            </label>
+          </div>
 
           <label class="field">
             <span>Дата действия</span>
@@ -98,10 +104,16 @@
             <input data-field="package" type="text" value="Дачный стандарт" />
           </label>
 
-          <label class="field">
-            <span>Цена</span>
-            <input data-field="price" type="text" value="12 116 000" />
-          </label>
+          <div class="price-fields">
+            <label class="field">
+              <span>Цена</span>
+              <input data-field="price" type="text" value="12 116 000" />
+            </label>
+            <label class="field">
+              <span>Зачёркнутая</span>
+              <input data-field="oldPrice" type="text" placeholder="0" />
+            </label>
+          </div>
 
           <label class="field">
             <span>Дата действия</span>
@@ -134,9 +146,15 @@
                   <span>Комплектация</span>
                   <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
                 </div>
-                <div class="price-line">
-                  <strong data-output="price" contenteditable="true">12 116 000</strong>
-                  <span>₽</span>
+                <div class="price-stack">
+                  <div class="price-line">
+                    <strong data-output="price" contenteditable="true">12 116 000</strong>
+                    <span>₽</span>
+                  </div>
+                  <div class="old-price-line" data-output="old-price-row" hidden>
+                    <strong data-output="oldPrice" contenteditable="true"></strong>
+                    <span>₽</span>
+                  </div>
                 </div>
                 <p class="engineering-line">
                   <span class="bolt" aria-hidden="true"></span>
@@ -160,9 +178,15 @@
                   <span>Комплектация</span>
                   <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
                 </div>
-                <div class="price-line">
-                  <strong data-output="price" contenteditable="true">12 116 000</strong>
-                  <span>₽</span>
+                <div class="price-stack">
+                  <div class="price-line">
+                    <strong data-output="price" contenteditable="true">12 116 000</strong>
+                    <span>₽</span>
+                  </div>
+                  <div class="old-price-line" data-output="old-price-row" hidden>
+                    <strong data-output="oldPrice" contenteditable="true"></strong>
+                    <span>₽</span>
+                  </div>
                 </div>
                 <p class="engineering-line">
                   <span class="bolt" aria-hidden="true"></span>

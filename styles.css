@@ -103,6 +103,21 @@ select {
   background-size: 16px 10px;
 }
 
+.price-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: 240px;
+}
+
+.price-fields .field input {
+  width: 111px;
+}
+
+.price-fields .field span {
+  white-space: nowrap;
+}
+
 .qr-upload {
   position: relative;
   display: block;
@@ -284,11 +299,16 @@ select {
   font-weight: 700;
 }
 
+.price-stack {
+  display: grid;
+  gap: 4mm;
+  margin-top: 11mm;
+}
+
 .price-line {
   display: flex;
   align-items: baseline;
   gap: 4mm;
-  margin-top: 15mm;
   white-space: nowrap;
 }
 
@@ -300,6 +320,30 @@ select {
 
 .price-line span {
   font-size: 18mm;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.old-price-line {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+  width: fit-content;
+  color: #b8b8b8;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #b8b8b8;
+  white-space: nowrap;
+}
+
+.old-price-line strong {
+  font-size: 15mm;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.old-price-line span {
+  font-size: 11mm;
   font-weight: 700;
   line-height: 1;
 }
