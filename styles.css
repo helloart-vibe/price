@@ -344,9 +344,13 @@ select {
   white-space: nowrap;
 }
 
+.old-price-line[hidden] {
+  display: none;
+}
+
 .old-price-line strong {
   font-size: 15mm;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
   text-decoration: line-through;
   text-decoration-thickness: 2px;
@@ -355,7 +359,7 @@ select {
 
 .old-price-line span {
   font-size: 11mm;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
   text-decoration: none;
 }
