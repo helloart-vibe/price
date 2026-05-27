@@ -315,6 +315,10 @@ select {
   margin-top: 11mm;
 }
 
+.ticket.has-old-price .price-stack {
+  transform: translateY(-4px);
+}
+
 .price-line {
   display: flex;
   align-items: baseline;
@@ -323,7 +327,7 @@ select {
 }
 
 .price-line strong {
-  font-size: 25mm;
+  font-size: calc(25mm - 2pt);
   font-weight: 700;
   line-height: 1;
 }

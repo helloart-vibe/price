@@ -59,6 +59,7 @@ function renderTicket(index) {
   const oldPriceRow = ticket.querySelector("[data-output='old-price-row']");
   ticket.querySelector("[data-output='oldPrice']").textContent = state.oldPrice;
   oldPriceRow.hidden = !state.oldPrice.trim();
+  ticket.classList.toggle("has-old-price", Boolean(state.oldPrice.trim()));
   ticket.querySelector("[data-output='date']").textContent = state.date;
   ticket.querySelector("[data-output='engineering']").innerHTML = engineeringText[state.engineering];
   ticket.querySelector("[data-output='qr']").src = project.qr;
