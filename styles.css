@@ -327,13 +327,13 @@ select {
 }
 
 .price-line strong {
-  font-size: calc(25mm - 2pt);
+  font-size: 85px;
   font-weight: 700;
   line-height: 1;
 }
 
 .price-line span {
-  font-size: 18mm;
+  font-size: 65px;
   font-weight: 700;
   line-height: 1;
 }
@@ -353,7 +353,7 @@ select {
 }
 
 .old-price-line strong {
-  font-size: 15mm;
+  font-size: 52px;
   font-weight: 600;
   line-height: 1;
   text-decoration: line-through;
@@ -362,7 +362,7 @@ select {
 }
 
 .old-price-line span {
-  font-size: 11mm;
+  font-size: 38px;
   font-weight: 600;
   line-height: 1;
   text-decoration: none;

@@ -75,8 +75,8 @@ function fitText(ticket) {
       { element: ticket.querySelector(".package-pill"), max: 15, min: 10 },
       { element: ticket.querySelector(".engineering-line"), max: 12, min: 7 },
       { element: ticket.querySelector(".date-line"), max: 12, min: 7 },
-      { element: ticket.querySelector(".price-line strong"), max: 95, min: 52 },
-      { element: ticket.querySelector(".old-price-line strong"), max: 57, min: 32 },
+      { element: ticket.querySelector(".price-line strong"), max: 85, min: 52 },
+      { element: ticket.querySelector(".old-price-line strong"), max: 52, min: 32 },
     ].forEach(({ element, max, min }) => {
       if (!element) {
         return;
