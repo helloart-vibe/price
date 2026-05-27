@@ -232,11 +232,11 @@ select {
   transform-origin: center;
 }
 
-.sheet-logo {
-  position: absolute;
+.screen-logo {
+  position: fixed;
   top: 16px;
   right: 16px;
-  z-index: 2;
+  z-index: 20;
   width: 60px;
   height: 60px;
   object-fit: contain;
@@ -499,6 +499,10 @@ select {
   }
 
   .editor {
+    display: none;
+  }
+
+  .screen-logo {
     display: none;
   }
 
