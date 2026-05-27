@@ -1,12 +1,24 @@
 const placeholderQr = "./assets/qr-code.png";
 
 const projects = {
-  "vityaz-2": {
-    label: "Витязь 2",
+  "dobrynya-m2": {
+    label: "Добрыня М2",
+    qr: placeholderQr,
+  },
+  "ohotnik-3": {
+    label: "Охотник 3",
+    qr: placeholderQr,
+  },
+  "dobrynya-5": {
+    label: "Добрыня 5",
     qr: placeholderQr,
   },
   "vityaz-3": {
     label: "Витязь 3",
+    qr: placeholderQr,
+  },
+  "vityaz-m6": {
+    label: "Витязь М6",
     qr: placeholderQr,
   },
 };
