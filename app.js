@@ -47,6 +47,21 @@ function cleanPackage(value) {
   return value.replace(/[«»]/g, "").trim();
 }
 
+function formatPrice(value) {
+  const digits = value.replace(/\D/g, "");
+
+  if (!digits) {
+    return "";
+  }
+
+  return digits.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+function formatPriceInput(input) {
+  const formatted = formatPrice(input.value);
+  input.value = formatted;
+}
+
 function renderTicket(index) {
   const editor = editors[index];
   const ticket = tickets[index];
@@ -100,10 +115,21 @@ function syncEditableToEditor(index, outputName, value) {
     return;
   }
 
+  if (outputName === "price" || outputName === "oldPrice") {
+    input.value = formatPrice(value);
+    return;
+  }
+
   input.value = outputName === "package" ? cleanPackage(value) : value.trim();
 }
 
 editors.forEach((editor, index) => {
+  editor.querySelectorAll("[data-field='price'], [data-field='oldPrice']").forEach((input) => {
+    input.addEventListener("input", () => {
+      formatPriceInput(input);
+    });
+  });
+
   editor.addEventListener("input", () => renderTicket(index));
   editor.addEventListener("change", () => renderTicket(index));
 
