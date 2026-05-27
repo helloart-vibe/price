@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Шаблон ценников A4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="workspace">
+      <aside class="editor" aria-label="Редактор ценников">
+        <form class="ticket-form" data-ticket-editor="0">
+          <h1>Ценник №1</h1>
+
+          <label class="field">
+            <span>Проект</span>
+            <select data-field="project">
+              <option value="vityaz-2">Витязь 2</option>
+              <option value="vityaz-3">Витязь 3</option>
+            </select>
+            <span class="qr-upload">
+              изменился qr-код?
+              <button type="button" data-action="pick-qr">обновить</button>
+              <input data-field="qr" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" />
+            </span>
+          </label>
+
+          <label class="field">
+            <span>Технология</span>
+            <input data-field="tech" type="text" value="Каркас" />
+          </label>
+
+          <label class="field">
+            <span>Комплектация</span>
+            <input data-field="package" type="text" value="Дачный стандарт" />
+          </label>
+
+          <label class="field">
+            <span>Цена</span>
+            <input data-field="price" type="text" value="12 116 000" />
+          </label>
+
+          <label class="field">
+            <span>Дата действия</span>
+            <input data-field="date" type="text" value="28.05.2026" />
+          </label>
+
+          <fieldset class="checks">
+            <legend>Инженерка</legend>
+            <label>
+              <input data-field="engineering" type="radio" name="engineering-0" value="extra" checked />
+              <span>не входит</span>
+            </label>
+            <label>
+              <input data-field="engineering" type="radio" name="engineering-0" value="included" />
+              <span>входит</span>
+            </label>
+          </fieldset>
+        </form>
+
+        <div class="divider"></div>
+
+        <form class="ticket-form" data-ticket-editor="1">
+          <h2>Ценник №2</h2>
+
+          <label class="field">
+            <span>Проект</span>
+            <select data-field="project">
+              <option value="vityaz-2">Витязь 2</option>
+              <option value="vityaz-3" selected>Витязь 3</option>
+            </select>
+            <span class="qr-upload">
+              изменился qr-код?
+              <button type="button" data-action="pick-qr">обновить</button>
+              <input data-field="qr" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" />
+            </span>
+          </label>
+
+          <label class="field">
+            <span>Технология</span>
+            <input data-field="tech" type="text" value="Каркас" />
+          </label>
+
+          <label class="field">
+            <span>Комплектация</span>
+            <input data-field="package" type="text" value="Дачный стандарт" />
+          </label>
+
+          <label class="field">
+            <span>Цена</span>
+            <input data-field="price" type="text" value="12 116 000" />
+          </label>
+
+          <label class="field">
+            <span>Дата действия</span>
+            <input data-field="date" type="text" value="28.05.2026" />
+          </label>
+
+          <fieldset class="checks">
+            <legend>Инженерка</legend>
+            <label>
+              <input data-field="engineering" type="radio" name="engineering-1" value="extra" checked />
+              <span>не входит</span>
+            </label>
+            <label>
+              <input data-field="engineering" type="radio" name="engineering-1" value="included" />
+              <span>входит</span>
+            </label>
+          </fieldset>
+        </form>
+
+        <button class="print-button" id="printButton" type="button">Печать / PDF</button>
+      </aside>
+
+      <section class="preview" aria-label="A4 макет">
+        <article class="sheet" aria-label="Лист A4 с двумя ценниками">
+          <div class="sheet-art">
+            <section class="tickets">
+              <article class="ticket" data-ticket="0">
+                <div class="tech-pill" data-output="tech" contenteditable="true">Каркас</div>
+                <div class="package-pill">
+                  <span>Комплектация</span>
+                  <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
+                </div>
+                <div class="price-line">
+                  <strong data-output="price" contenteditable="true">12 116 000</strong>
+                  <span>₽</span>
+                </div>
+                <p class="engineering-line">
+                  <span class="bolt" aria-hidden="true"></span>
+                  <span data-output="engineering">
+                    входит полный пакет <u>инженерных коммуникаций</u>.
+                  </span>
+                </p>
+                <p class="date-line">
+                  Стоимость действительна при заказе в кредит до
+                  <span data-output="date" contenteditable="true">28.05.2026</span>.
+                </p>
+                <figure class="qr-block">
+                  <img data-output="qr" alt="QR-код проекта" />
+                  <figcaption>Узнайте о проекте больше</figcaption>
+                </figure>
+              </article>
+
+              <article class="ticket" data-ticket="1">
+                <div class="tech-pill" data-output="tech" contenteditable="true">Каркас</div>
+                <div class="package-pill">
+                  <span>Комплектация</span>
+                  <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
+                </div>
+                <div class="price-line">
+                  <strong data-output="price" contenteditable="true">12 116 000</strong>
+                  <span>₽</span>
+                </div>
+                <p class="engineering-line">
+                  <span class="bolt" aria-hidden="true"></span>
+                  <span data-output="engineering">
+                    входит полный пакет <u>инженерных коммуникаций</u>.
+                  </span>
+                </p>
+                <p class="date-line">
+                  Стоимость действительна при заказе в кредит до
+                  <span data-output="date" contenteditable="true">28.05.2026</span>.
+                </p>
+                <figure class="qr-block">
+                  <img data-output="qr" alt="QR-код проекта" />
+                  <figcaption>Узнайте о проекте больше</figcaption>
+                </figure>
+              </article>
+            </section>
+
+            <aside class="project-strip" aria-label="Названия проектов">
+              <span data-output="project-label" data-label-index="0">Витязь 2</span>
+              <span data-output="project-label" data-label-index="1">Витязь 3</span>
+            </aside>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
