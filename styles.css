@@ -310,11 +310,28 @@ select {
   height: 100mm;
   min-height: 0;
   padding: 10.8mm;
-  border: 1px dashed #000;
+  background:
+    repeating-linear-gradient(90deg, #dbdbdb 0 8px, transparent 8px 16px) top / 100% 1px no-repeat,
+    repeating-linear-gradient(90deg, #dbdbdb 0 8px, transparent 8px 16px) bottom / 100% 1px no-repeat,
+    repeating-linear-gradient(180deg, #dbdbdb 0 8px, transparent 8px 16px) left / 1px 100% no-repeat,
+    repeating-linear-gradient(180deg, #dbdbdb 0 8px, transparent 8px 16px) right / 1px 100% no-repeat;
 }
 
 .ticket + .ticket {
-  border-top: 0;
+  background:
+    repeating-linear-gradient(90deg, #dbdbdb 0 8px, transparent 8px 16px) bottom / 100% 1px no-repeat,
+    repeating-linear-gradient(180deg, #dbdbdb 0 8px, transparent 8px 16px) left / 1px 100% no-repeat,
+    repeating-linear-gradient(180deg, #dbdbdb 0 8px, transparent 8px 16px) right / 1px 100% no-repeat;
+}
+
+.cut-mark {
+  position: absolute;
+  left: -28px;
+  top: 48mm;
+  width: 29px;
+  height: 38px;
+  transform: scaleX(-1);
+  pointer-events: none;
 }
 
 .ticket-meta {
@@ -441,18 +458,18 @@ select {
 
 .qr-block {
   position: absolute;
-  right: calc(10.8mm - 5px);
-  bottom: 10.8mm;
+  right: calc(10.8mm - 11px);
+  bottom: calc(10.8mm - 2px);
   display: grid;
   justify-items: center;
-  gap: 4mm;
+  gap: 2mm;
   margin: 0;
 }
 
 .qr-block img {
   display: block;
-  width: 54mm;
-  height: 54mm;
+  width: 58mm;
+  height: 58mm;
   object-fit: contain;
   image-rendering: pixelated;
 }
