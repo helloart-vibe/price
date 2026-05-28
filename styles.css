@@ -311,7 +311,8 @@ select {
   display: grid;
   gap: 4mm;
   max-width: 116mm;
-  font-size: 18px;
+  font-size: 11pt;
+  text-transform: uppercase;
 }
 
 .ticket-meta p {
@@ -328,11 +329,11 @@ select {
 .price-stack {
   display: grid;
   gap: 4mm;
-  margin-top: 26mm;
+  margin-top: calc(26mm - 18px);
 }
 
 .ticket.has-old-price .price-stack {
-  transform: translateY(-8px);
+  transform: translateY(-26px);
 }
 
 .price-line {
@@ -421,8 +422,8 @@ select {
   width: 52mm;
   margin: 0;
   color: #9d9d9d;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 11pt;
+  font-weight: 500;
   line-height: 1.35;
   text-align: center;
   text-transform: uppercase;
@@ -431,7 +432,7 @@ select {
 .qr-block {
   position: absolute;
   right: 10.8mm;
-  bottom: 17mm;
+  bottom: 10.8mm;
   display: grid;
   justify-items: center;
   gap: 4mm;

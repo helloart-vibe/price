@@ -110,7 +110,7 @@ function fitText(ticket) {
   requestAnimationFrame(() => {
     [
       { element: ticket.querySelector(".ticket-meta"), max: 18, min: 12 },
-      { element: ticket.querySelector(".side-title"), max: 20, min: 12 },
+      { element: ticket.querySelector(".side-title"), max: 15, min: 10 },
       { element: ticket.querySelector(".engineering-line"), max: 12, min: 7 },
       { element: ticket.querySelector(".date-line"), max: 12, min: 7 },
       { element: ticket.querySelector(".price-line strong"), max: 85, min: 52 },
