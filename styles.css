@@ -339,7 +339,7 @@ select {
 .price-stack {
   display: grid;
   gap: 4mm;
-  margin-top: calc(26mm - 18px);
+  margin-top: calc(26mm - 26px);
 }
 
 .ticket.has-old-price .price-stack {
