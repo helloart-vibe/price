@@ -427,14 +427,14 @@ select {
 
 .side-title {
   position: absolute;
-  top: 10.8mm;
+  top: 9mm;
   right: 10.8mm;
   width: 72mm;
   margin: 0;
   color: #9d9d9d;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.8;
   text-align: right;
   text-transform: uppercase;
 }
