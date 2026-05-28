@@ -312,11 +312,11 @@ select {
 .price-stack {
   display: grid;
   gap: 4mm;
-  margin-top: 11mm;
+  margin-top: calc(11mm + 8px);
 }
 
 .ticket.has-old-price .price-stack {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
 }
 
 .price-line {
