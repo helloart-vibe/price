@@ -319,7 +319,7 @@ select {
 
 .ticket-meta {
   display: grid;
-  gap: 5mm;
+  gap: 4mm;
   max-width: 116mm;
   font-size: 11pt;
   text-transform: uppercase;
@@ -339,11 +339,11 @@ select {
 .price-stack {
   display: grid;
   gap: 4mm;
-  margin-top: 24mm;
+  margin-top: calc(26mm - 18px);
 }
 
 .ticket.has-old-price .price-stack {
-  transform: translateY(-8px);
+  transform: translateY(-26px);
 }
 
 .price-line {
@@ -398,7 +398,7 @@ select {
 .engineering-line {
   position: absolute;
   left: 10.8mm;
-  bottom: 19mm;
+  bottom: 18mm;
   margin: 0;
   font-size: 11pt;
   font-weight: 600;
@@ -415,7 +415,7 @@ select {
 .date-line {
   position: absolute;
   left: 10.8mm;
-  bottom: 11mm;
+  bottom: 10mm;
   margin: 0;
   color: var(--muted);
   font-size: 11pt;
@@ -427,7 +427,7 @@ select {
 
 .side-title {
   position: absolute;
-  top: 10mm;
+  top: 10.8mm;
   right: 10.8mm;
   width: 72mm;
   margin: 0;
@@ -442,17 +442,17 @@ select {
 .qr-block {
   position: absolute;
   right: 10.8mm;
-  top: 30mm;
+  bottom: 10.8mm;
   display: grid;
   justify-items: center;
-  gap: 3.5mm;
+  gap: 4mm;
   margin: 0;
 }
 
 .qr-block img {
   display: block;
-  width: 45mm;
-  height: 45mm;
+  width: 53mm;
+  height: 53mm;
   object-fit: contain;
   image-rendering: pixelated;
 }
