@@ -22,8 +22,8 @@ const projects = {
 };
 
 const engineeringText = {
-  included: "входит полный пакет инженерных коммуникаций.",
-  extra: "инженерные коммуникации можно заказать дополнительно",
+  included: "Входит полный пакет инженерных коммуникаций.",
+  extra: "Инженерные коммуникации можно заказать дополнительно",
 };
 
 const editors = Array.from(document.querySelectorAll("[data-ticket-editor]"));
@@ -83,6 +83,10 @@ function renderMultiline(value) {
     .join("<br>");
 }
 
+function makeTwoLineTitle(title, projectLabel) {
+  return `${title.trim() || "Одноэтажный коттедж"}\n${projectLabel}`;
+}
+
 function renderTicket(index) {
   const editor = editors[index];
   const ticket = tickets[index];
@@ -90,7 +94,7 @@ function renderTicket(index) {
   const project = projects[state.project];
 
   ticket.querySelector("[data-output='title']").innerHTML = renderMultiline(
-    `${state.title}\n${project.label}`,
+    makeTwoLineTitle(state.title, project.label),
   );
   ticket.querySelector("[data-output='tech']").textContent = state.tech;
   ticket.querySelector("[data-output='package']").textContent = `«${cleanPackage(state.packageName)}»`;
@@ -111,8 +115,8 @@ function fitText(ticket) {
     [
       { element: ticket.querySelector(".ticket-meta"), max: 18, min: 12 },
       { element: ticket.querySelector(".side-title"), max: 15, min: 10 },
-      { element: ticket.querySelector(".engineering-line"), max: 12, min: 7 },
-      { element: ticket.querySelector(".date-line"), max: 12, min: 7 },
+      { element: ticket.querySelector(".engineering-line"), max: 15, min: 9 },
+      { element: ticket.querySelector(".date-line"), max: 15, min: 9 },
       { element: ticket.querySelector(".price-line strong"), max: 85, min: 52 },
       { element: ticket.querySelector(".old-price-line strong"), max: 52, min: 32 },
     ].forEach(({ element, max, min }) => {

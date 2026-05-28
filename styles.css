@@ -390,7 +390,7 @@ select {
   left: 10.8mm;
   bottom: 18mm;
   margin: 0;
-  font-size: 12px;
+  font-size: 11pt;
   font-weight: 600;
   line-height: 1.2;
   text-transform: none;
@@ -408,7 +408,7 @@ select {
   bottom: 10mm;
   margin: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11pt;
   font-weight: 600;
   line-height: 1.2;
   text-transform: none;
@@ -425,7 +425,7 @@ select {
   font-size: 11pt;
   font-weight: 500;
   line-height: 1.35;
-  text-align: center;
+  text-align: right;
   text-transform: uppercase;
 }
 
