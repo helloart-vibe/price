@@ -451,8 +451,8 @@ select {
 
 .qr-block img {
   display: block;
-  width: 53mm;
-  height: 53mm;
+  width: 54mm;
+  height: 54mm;
   object-fit: contain;
   image-rendering: pixelated;
 }
