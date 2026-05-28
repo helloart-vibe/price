@@ -441,7 +441,7 @@ select {
 
 .qr-block {
   position: absolute;
-  right: 10.8mm;
+  right: calc(10.8mm - 5px);
   bottom: 10.8mm;
   display: grid;
   justify-items: center;
