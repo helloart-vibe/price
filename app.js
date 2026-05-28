@@ -115,8 +115,8 @@ function fitText(ticket) {
     [
       { element: ticket.querySelector(".ticket-meta"), max: 16, min: 12 },
       { element: ticket.querySelector(".side-title"), max: 15, min: 10 },
-      { element: ticket.querySelector(".engineering-line"), max: 15, min: 9 },
-      { element: ticket.querySelector(".date-line"), max: 15, min: 9 },
+      { element: ticket.querySelector(".engineering-line"), max: 13, min: 9 },
+      { element: ticket.querySelector(".date-line"), max: 13, min: 9 },
       { element: ticket.querySelector(".price-line strong"), max: 85, min: 52 },
       { element: ticket.querySelector(".old-price-line strong"), max: 52, min: 32 },
     ].forEach(({ element, max, min }) => {
