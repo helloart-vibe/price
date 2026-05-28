@@ -22,18 +22,18 @@ const projects = {
 };
 
 const engineeringText = {
-  included: "входит полный пакет <u>инженерных коммуникаций</u>.",
-  extra: "<u>инженерные коммуникации</u> можно заказать дополнительно",
+  included: "входит полный пакет инженерных коммуникаций.",
+  extra: "инженерные коммуникации можно заказать дополнительно",
 };
 
 const editors = Array.from(document.querySelectorAll("[data-ticket-editor]"));
 const tickets = Array.from(document.querySelectorAll("[data-ticket]"));
-const projectLabels = Array.from(document.querySelectorAll("[data-output='project-label']"));
 const printButton = document.querySelector("#printButton");
 
 function getEditorState(editor) {
   return {
     project: editor.querySelector("[data-field='project']").value,
+    title: editor.querySelector("[data-field='title']").value,
     tech: editor.querySelector("[data-field='tech']").value,
     packageName: editor.querySelector("[data-field='package']").value,
     price: editor.querySelector("[data-field='price']").value,
@@ -62,12 +62,34 @@ function formatPriceInput(input) {
   input.value = formatted;
 }
 
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, (char) => {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;",
+    };
+
+    return entities[char];
+  });
+}
+
+function renderMultiline(value) {
+  return value
+    .split(/\r?\n/)
+    .map((line) => escapeHtml(line))
+    .join("<br>");
+}
+
 function renderTicket(index) {
   const editor = editors[index];
   const ticket = tickets[index];
   const state = getEditorState(editor);
   const project = projects[state.project];
 
+  ticket.querySelector("[data-output='title']").innerHTML = renderMultiline(state.title);
   ticket.querySelector("[data-output='tech']").textContent = state.tech;
   ticket.querySelector("[data-output='package']").textContent = `«${cleanPackage(state.packageName)}»`;
   ticket.querySelector("[data-output='price']").textContent = state.price;
@@ -78,7 +100,6 @@ function renderTicket(index) {
   ticket.querySelector("[data-output='date']").textContent = state.date;
   ticket.querySelector("[data-output='engineering']").innerHTML = engineeringText[state.engineering];
   ticket.querySelector("[data-output='qr']").src = project.qr;
-  projectLabels[index].textContent = project.label;
 
   fitText(ticket);
 }
@@ -86,8 +107,8 @@ function renderTicket(index) {
 function fitText(ticket) {
   requestAnimationFrame(() => {
     [
-      { element: ticket.querySelector(".tech-pill"), max: 33, min: 18 },
-      { element: ticket.querySelector(".package-pill"), max: 15, min: 10 },
+      { element: ticket.querySelector(".ticket-meta"), max: 18, min: 12 },
+      { element: ticket.querySelector(".side-title"), max: 20, min: 12 },
       { element: ticket.querySelector(".engineering-line"), max: 12, min: 7 },
       { element: ticket.querySelector(".date-line"), max: 12, min: 7 },
       { element: ticket.querySelector(".price-line strong"), max: 85, min: 52 },
@@ -159,7 +180,8 @@ editors.forEach((editor, index) => {
 tickets.forEach((ticket, index) => {
   ticket.querySelectorAll("[contenteditable='true']").forEach((element) => {
     element.addEventListener("input", () => {
-      syncEditableToEditor(index, element.dataset.output, element.textContent);
+      const value = element.dataset.output === "title" ? element.innerText : element.textContent;
+      syncEditableToEditor(index, element.dataset.output, value);
       renderTicket(index);
     });
   });

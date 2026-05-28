@@ -32,7 +32,8 @@ body {
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 
@@ -79,7 +80,8 @@ select {
 }
 
 .field input,
-.field select {
+.field select,
+.field textarea {
   width: 240px;
   min-height: 38px;
   padding: 0 13px;
@@ -89,6 +91,13 @@ select {
   color: var(--ink);
   font-size: 15px;
   font-weight: 600;
+}
+
+.field textarea {
+  min-height: 58px;
+  padding: 9px 13px;
+  resize: vertical;
+  line-height: 1.25;
 }
 
 .field select {
@@ -244,75 +253,53 @@ select {
 
 .sheet-art {
   display: grid;
-  grid-template-columns: 223mm 74mm;
-  width: 297mm;
-  height: 210mm;
+  width: 223mm;
+  height: 200mm;
 }
 
 .tickets {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 100mm 100mm;
   align-self: stretch;
-  margin: 0 0 0 0;
-  border: 1px dashed #000;
+  width: 223mm;
+  height: 200mm;
 }
 
 .ticket {
   position: relative;
+  width: 223mm;
+  height: 100mm;
   min-height: 0;
-  padding: 11mm 62mm 10mm 32px;
+  padding: 10.8mm;
+  border: 1px dashed #000;
 }
 
 .ticket + .ticket {
-  border-top: 1px dashed #000;
+  border-top: 0;
 }
 
-.tech-pill {
-  display: inline-flex;
-  width: fit-content;
-  min-width: 0;
-  max-width: 94mm;
-  min-height: 13mm;
-  align-items: center;
-  justify-content: center;
-  padding: 2mm 5mm;
-  border: 0.45mm solid #000;
-  border-radius: 20mm;
-  font-size: 8.7mm;
-  font-weight: 600;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
+.ticket-meta {
+  display: grid;
+  gap: 4mm;
+  max-width: 116mm;
+  font-size: 18px;
 }
 
-.package-pill {
-  position: absolute;
-  top: 11.2mm;
-  right: 32px;
-  display: inline-flex;
-  max-width: 110mm;
-  min-height: 11mm;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2mm;
-  padding: 2.5mm 4mm;
-  border-radius: 20mm;
-  background: var(--soft);
-  font-size: 3.8mm;
+.ticket-meta p {
+  margin: 0;
+  color: #050505;
   font-weight: 500;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
+  line-height: 1.2;
 }
 
-.package-pill strong {
+.ticket-meta strong {
   font-weight: 700;
 }
 
 .price-stack {
   display: grid;
   gap: 4mm;
-  margin-top: calc(11mm + 8px);
+  margin-top: 26mm;
 }
 
 .ticket.has-old-price .price-stack {
@@ -369,17 +356,14 @@ select {
 }
 
 .engineering-line {
-  display: flex;
-  align-items: center;
-  gap: 3mm;
   position: absolute;
-  left: 32px;
+  left: 10.8mm;
   bottom: 18mm;
   margin: 0;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: none;
   white-space: nowrap;
 }
 
@@ -388,34 +372,40 @@ select {
   text-decoration-thickness: 1px;
 }
 
-.bolt {
-  width: 3mm;
-  height: 5mm;
-  flex: 0 0 auto;
-  background: #000;
-  clip-path: polygon(52% 0, 0 55%, 36% 55%, 20% 100%, 100% 40%, 61% 40%);
-}
-
 .date-line {
   position: absolute;
-  left: 32px;
+  left: 10.8mm;
   bottom: 10mm;
   margin: 0;
   color: var(--muted);
   font-size: 12px;
   font-weight: 600;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: none;
   white-space: nowrap;
+}
+
+.side-title {
+  position: absolute;
+  top: 10.8mm;
+  right: 10.8mm;
+  width: 52mm;
+  margin: 0;
+  color: #9d9d9d;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .qr-block {
   position: absolute;
-  right: 32px;
-  bottom: calc(12mm - 4px);
+  right: 10.8mm;
+  bottom: 17mm;
   display: grid;
   justify-items: center;
-  gap: 5mm;
+  gap: 4mm;
   margin: 0;
 }
 
@@ -434,25 +424,6 @@ select {
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
-}
-
-.project-strip {
-  position: relative;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  background: #fff;
-}
-
-.project-strip span {
-  display: grid;
-  place-items: center;
-  color: #9d9d9d;
-  font-size: 3.4mm;
-  font-weight: 400;
-  letter-spacing: 0.13mm;
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
 }
 
 [contenteditable="true"] {

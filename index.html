@@ -35,6 +35,12 @@
           </label>
 
           <label class="field">
+            <span>Название справа</span>
+            <textarea data-field="title" rows="2">одноэтажный
+коттедж Добрыня М2</textarea>
+          </label>
+
+          <label class="field">
             <span>Технология</span>
             <input data-field="tech" type="text" value="Каркас" />
           </label>
@@ -95,6 +101,12 @@
           </label>
 
           <label class="field">
+            <span>Название справа</span>
+            <textarea data-field="title" rows="2">одноэтажный
+коттедж Витязь 3</textarea>
+          </label>
+
+          <label class="field">
             <span>Технология</span>
             <input data-field="tech" type="text" value="Каркас" />
           </label>
@@ -142,10 +154,12 @@
           <div class="sheet-art">
             <section class="tickets">
               <article class="ticket" data-ticket="0">
-                <div class="tech-pill" data-output="tech" contenteditable="true">Каркас</div>
-                <div class="package-pill">
-                  <span>Комплектация</span>
-                  <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
+                <div class="ticket-meta">
+                  <p>Технология <strong data-output="tech" contenteditable="true">Каркас</strong></p>
+                  <p>
+                    Комплектация
+                    <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
+                  </p>
                 </div>
                 <div class="price-stack">
                   <div class="price-line">
@@ -158,14 +172,16 @@
                   </div>
                 </div>
                 <p class="engineering-line">
-                  <span class="bolt" aria-hidden="true"></span>
                   <span data-output="engineering">
-                    входит полный пакет <u>инженерных коммуникаций</u>.
+                    инженерные коммуникации можно заказать дополнительно
                   </span>
                 </p>
                 <p class="date-line">
                   Стоимость действительна при заказе в кредит до
                   <span data-output="date" contenteditable="true">28.05.2026</span>.
+                </p>
+                <p class="side-title" data-output="title" contenteditable="true">
+                  одноэтажный<br />коттедж Добрыня М2
                 </p>
                 <figure class="qr-block">
                   <img data-output="qr" alt="QR-код проекта" />
@@ -174,10 +190,12 @@
               </article>
 
               <article class="ticket" data-ticket="1">
-                <div class="tech-pill" data-output="tech" contenteditable="true">Каркас</div>
-                <div class="package-pill">
-                  <span>Комплектация</span>
-                  <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
+                <div class="ticket-meta">
+                  <p>Технология <strong data-output="tech" contenteditable="true">Каркас</strong></p>
+                  <p>
+                    Комплектация
+                    <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
+                  </p>
                 </div>
                 <div class="price-stack">
                   <div class="price-line">
@@ -190,14 +208,16 @@
                   </div>
                 </div>
                 <p class="engineering-line">
-                  <span class="bolt" aria-hidden="true"></span>
                   <span data-output="engineering">
-                    входит полный пакет <u>инженерных коммуникаций</u>.
+                    инженерные коммуникации можно заказать дополнительно
                   </span>
                 </p>
                 <p class="date-line">
                   Стоимость действительна при заказе в кредит до
                   <span data-output="date" contenteditable="true">28.05.2026</span>.
+                </p>
+                <p class="side-title" data-output="title" contenteditable="true">
+                  одноэтажный<br />коттедж Витязь 3
                 </p>
                 <figure class="qr-block">
                   <img data-output="qr" alt="QR-код проекта" />
@@ -205,11 +225,6 @@
                 </figure>
               </article>
             </section>
-
-            <aside class="project-strip" aria-label="Названия проектов">
-              <span data-output="project-label" data-label-index="0">Витязь 2</span>
-              <span data-output="project-label" data-label-index="1">Витязь 3</span>
-            </aside>
           </div>
         </article>
       </section>
