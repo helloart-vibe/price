@@ -141,28 +141,38 @@ select {
   border: 0;
   background: transparent;
   color: #999;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.2;
 }
 
-.project-title span {
-  color: #111;
-  font-size: 18px;
-  line-height: 1;
+.project-title img {
+  width: 13px;
+  height: 13px;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 160ms ease;
+}
+
+.project-title:hover img {
+  opacity: 0.55;
 }
 
 .project-card button {
   justify-self: start;
-  min-height: 33px;
+  min-height: 24px;
   padding: 0 12px;
   border: 1px solid #cfcfcf;
   border-radius: 4px;
-  background: #fff;
+  background: #f3f3f3;
   color: #111;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 500;
+}
+
+.project-card button:hover {
+  opacity: 0.72;
 }
 
 .project-card input[type="file"] {
