@@ -89,7 +89,9 @@ function renderTicket(index) {
   const state = getEditorState(editor);
   const project = projects[state.project];
 
-  ticket.querySelector("[data-output='title']").innerHTML = renderMultiline(state.title);
+  ticket.querySelector("[data-output='title']").innerHTML = renderMultiline(
+    `${state.title}\n${project.label}`,
+  );
   ticket.querySelector("[data-output='tech']").textContent = state.tech;
   ticket.querySelector("[data-output='package']").textContent = `«${cleanPackage(state.packageName)}»`;
   ticket.querySelector("[data-output='price']").textContent = state.price;

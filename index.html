@@ -18,27 +18,24 @@
         <form class="ticket-form" data-ticket-editor="0">
           <h1>Ценник №1</h1>
 
-          <label class="field">
+          <div class="project-field">
             <span>Проект</span>
-            <select data-field="project">
-              <option value="dobrynya-m2">Добрыня М2</option>
-              <option value="ohotnik-3">Охотник 3</option>
-              <option value="dobrynya-5">Добрыня 5</option>
-              <option value="vityaz-3">Витязь 3</option>
-              <option value="vityaz-m6">Витязь М6</option>
-            </select>
-            <span class="qr-upload">
-              изменился qr-код?
-              <button type="button" data-action="pick-qr">обновить</button>
+            <div class="project-card">
+              <select data-field="project">
+                <option value="dobrynya-m2">Добрыня М2</option>
+                <option value="ohotnik-3">Охотник 3</option>
+                <option value="dobrynya-5">Добрыня 5</option>
+                <option value="vityaz-3">Витязь 3</option>
+                <option value="vityaz-m6">Витязь М6</option>
+              </select>
+              <label class="project-title">
+                <input data-field="title" type="text" value="Одноэтажный коттедж" />
+                <span aria-hidden="true">✎</span>
+              </label>
+              <button type="button" data-action="pick-qr">обновить QR-код</button>
               <input data-field="qr" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" />
-            </span>
-          </label>
-
-          <label class="field">
-            <span>Название справа</span>
-            <textarea data-field="title" rows="2">одноэтажный
-коттедж Добрыня М2</textarea>
-          </label>
+            </div>
+          </div>
 
           <label class="field">
             <span>Технология</span>
@@ -84,27 +81,24 @@
         <form class="ticket-form" data-ticket-editor="1">
           <h2>Ценник №2</h2>
 
-          <label class="field">
+          <div class="project-field">
             <span>Проект</span>
-            <select data-field="project">
-              <option value="dobrynya-m2">Добрыня М2</option>
-              <option value="ohotnik-3">Охотник 3</option>
-              <option value="dobrynya-5">Добрыня 5</option>
-              <option value="vityaz-3" selected>Витязь 3</option>
-              <option value="vityaz-m6">Витязь М6</option>
-            </select>
-            <span class="qr-upload">
-              изменился qr-код?
-              <button type="button" data-action="pick-qr">обновить</button>
+            <div class="project-card">
+              <select data-field="project">
+                <option value="dobrynya-m2">Добрыня М2</option>
+                <option value="ohotnik-3">Охотник 3</option>
+                <option value="dobrynya-5">Добрыня 5</option>
+                <option value="vityaz-3" selected>Витязь 3</option>
+                <option value="vityaz-m6">Витязь М6</option>
+              </select>
+              <label class="project-title">
+                <input data-field="title" type="text" value="Одноэтажный коттедж" />
+                <span aria-hidden="true">✎</span>
+              </label>
+              <button type="button" data-action="pick-qr">обновить QR-код</button>
               <input data-field="qr" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" />
-            </span>
-          </label>
-
-          <label class="field">
-            <span>Название справа</span>
-            <textarea data-field="title" rows="2">одноэтажный
-коттедж Витязь 3</textarea>
-          </label>
+            </div>
+          </div>
 
           <label class="field">
             <span>Технология</span>
