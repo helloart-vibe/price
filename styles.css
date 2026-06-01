@@ -1032,6 +1032,8 @@ body.has-save-guide .save-guide {
   }
 
   .screen-logo,
+  .guide-button,
+  .save-guide,
   .preview-actions {
     display: none;
   }
