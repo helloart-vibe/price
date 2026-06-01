@@ -172,6 +172,11 @@ select {
   pointer-events: auto;
 }
 
+body.has-save-guide .delete-ticket-button.guide-target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .form-summary {
   display: none;
   grid-column: 1;
@@ -479,8 +484,11 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 14px;
+  min-height: 44px;
+  padding: 6px 16px 6px 8px;
   border: 0;
-  background: transparent;
+  border-radius: 999px;
+  background: #f7f7f7;
   color: #000;
   cursor: pointer;
   font-size: 14px;

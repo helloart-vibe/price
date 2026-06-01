@@ -38,25 +38,25 @@ const projects = {
   "lira-4": {
     label: "Лира 4",
     qr: "./assets/lira-4.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
   "akvarel-4": {
     label: "Акварель 4",
     qr: "./assets/akvarel-4.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
   "riviera-2": {
     label: "Ривьера 2",
     qr: "./assets/riviera-2.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "nord-5": {
     label: "Норд 5",
     qr: "./assets/nord-5.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
 };
@@ -143,6 +143,23 @@ const guideSteps = [
     selector: "#saveListButton",
     text: "Сохраняйте список, чтобы в следующий раз не собирать ценники заново.",
     card: "right",
+  },
+  {
+    selector: ".ticket-form:first-of-type .delete-ticket-button",
+    text: "Наведите на ценник и нажмите крестик, если нужно удалить его из списка.",
+    card: "right",
+    prepare: () => {
+      const firstEditor = editors[0];
+
+      if (!firstEditor) {
+        addTicket();
+        return;
+      }
+
+      firstEditor.classList.remove("collapsed");
+      updateEditorToggle(firstEditor);
+      setActiveTicket(0);
+    },
   },
   {
     selector: ".preview-actions",
