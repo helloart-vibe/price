@@ -84,6 +84,12 @@ select {
   cursor: pointer;
 }
 
+.ticket-form:not(.collapsed) .form-head h1,
+.ticket-form:not(.collapsed) .form-head h2,
+.ticket-form:not(.collapsed) .toggle-ticket-button {
+  color: #930038;
+}
+
 .form-actions {
   grid-column: 2;
   grid-row: 1 / span 2;
