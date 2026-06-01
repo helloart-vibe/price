@@ -3,51 +3,61 @@ const projects = {
     label: "Добрыня М2",
     qr: "./assets/dobrynya-m2.png",
     defaultPackage: "Жилой дом. Утепление 200",
+    defaultTitle: "Одноэтажный коттедж",
   },
   "ohotnik-3": {
     label: "Охотник 3",
     qr: "./assets/ohotnik-3.png",
     defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
   },
   "dobrynya-5": {
     label: "Добрыня 5",
     qr: "./assets/dobrynya-5.png",
     defaultPackage: "Жилой дом. Утепление 200",
+    defaultTitle: "Одноэтажный коттедж",
   },
   "vityaz-3": {
     label: "Витязь 3",
     qr: "./assets/vityaz-3.png",
     defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
   },
   "vityaz-m6": {
     label: "Витязь М6",
     qr: "./assets/vityaz-m6.png",
     defaultPackage: "Теплый контур",
+    defaultTitle: "Одноэтажный коттедж",
   },
   "barn-5": {
     label: "Барн 5",
     qr: "./assets/qr-code.png",
     defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
   },
   "lira-4": {
     label: "Лира 4",
     qr: "./assets/lira-4.png",
     defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
   },
   "akvarel-4": {
     label: "Акварель 4",
     qr: "./assets/akvarel-4.png",
     defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
   },
   "riviera-2": {
     label: "Ривьера 2",
     qr: "./assets/riviera-2.png",
     defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
   },
   "nord-5": {
     label: "Норд 5",
     qr: "./assets/nord-5.png",
     defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
   },
 };
 
@@ -72,14 +82,24 @@ const resetListButton = document.querySelector("#resetListButton");
 const panelActions = document.querySelector(".panel-actions");
 const tabButtons = Array.from(document.querySelectorAll("[data-tab]"));
 const toast = document.querySelector("#toast");
+const emptyState = document.createElement("p");
 const storagePrefix = "terem-price-list";
 const activeTabKey = `${storagePrefix}:active-tab`;
+const zyablikovoEmptyMigrationKey = `${storagePrefix}:zyablikovo-empty-v1`;
 const defaultProjectQrs = Object.fromEntries(
   Object.entries(projects).map(([key, project]) => [key, project.qr]),
 );
 let activeTab = localStorage.getItem(activeTabKey) || "salaryevo";
 let toastTimer;
 let activeTicketIndex = -1;
+
+emptyState.className = "empty-state";
+emptyState.textContent = "(пока пусто)";
+
+if (!localStorage.getItem(zyablikovoEmptyMigrationKey)) {
+  localStorage.removeItem(`${storagePrefix}:zyablikovo`);
+  localStorage.setItem(zyablikovoEmptyMigrationKey, "1");
+}
 
 function getEditorState(editor) {
   return {
@@ -97,7 +117,10 @@ function getEditorState(editor) {
 
 function setEditorState(editor, state) {
   editor.querySelector("[data-field='project']").value = state.project;
-  editor.querySelector("[data-field='title']").value = state.title;
+  editor.querySelector("[data-field='title']").value =
+    state.title === "Одноэтажный коттедж" && projects[state.project].defaultTitle !== "Одноэтажный коттедж"
+      ? projects[state.project].defaultTitle
+      : state.title;
   setProjectName(editor, state.projectName || projects[state.project].label);
   editor.querySelector("[data-field='tech']").value = state.tech;
   editor.querySelector("[data-field='package']").value = state.packageName;
@@ -119,7 +142,7 @@ function createDefaultState(index = 0) {
 
   return {
     project,
-    title: "Одноэтажный коттедж",
+    title: projects[project].defaultTitle,
     projectName: projects[project].label,
     tech: "Каркас",
     packageName: projects[project].defaultPackage,
@@ -383,10 +406,6 @@ function refreshIndexes() {
 }
 
 function deleteTicket(editor) {
-  if (editors.length <= 1) {
-    return;
-  }
-
   const index = editors.indexOf(editor);
 
   if (index === -1) {
@@ -399,6 +418,16 @@ function deleteTicket(editor) {
   ticket.remove();
 
   normalizeEditorDividers();
+
+  if (!editors.length) {
+    preview.querySelectorAll(".sheet").forEach((sheet) => sheet.remove());
+    editorPanel.insertBefore(emptyState, panelActions);
+    showBlankSheet();
+    setActiveTicket(-1);
+    updateSheetScale();
+    return;
+  }
+
   reflowTickets();
   refreshIndexes();
   setActiveTicket(-1);
@@ -438,6 +467,17 @@ function applyProjectDefaultName(editor) {
   setProjectName(editor, projects[projectSelect.value].label);
 }
 
+function applyProjectDefaultTitle(editor) {
+  const projectSelect = editor.querySelector("[data-field='project']");
+  const titleInput = editor.querySelector("[data-field='title']");
+
+  if (!projectSelect || !titleInput) {
+    return;
+  }
+
+  titleInput.value = projects[projectSelect.value].defaultTitle;
+}
+
 function getStorageKey(tab = activeTab) {
   return `${storagePrefix}:${tab}`;
 }
@@ -454,7 +494,11 @@ function applyProjectQrs(qrs = defaultProjectQrs) {
   });
 }
 
-function getDefaultList() {
+function getDefaultList(tab = activeTab) {
+  if (tab === "zyablikovo") {
+    return [];
+  }
+
   return [createDefaultState(0), createDefaultState(1)];
 }
 
@@ -490,10 +534,11 @@ function saveActiveTabFields() {
 
 function loadStoredTab(tab) {
   const raw = localStorage.getItem(getStorageKey(tab));
+  const defaultTickets = getDefaultList(tab);
 
   if (!raw) {
     return {
-      tickets: getDefaultList(),
+      tickets: defaultTickets,
       qrs: defaultProjectQrs,
     };
   }
@@ -502,12 +547,12 @@ function loadStoredTab(tab) {
     const data = JSON.parse(raw);
 
     return {
-      tickets: Array.isArray(data.tickets) && data.tickets.length ? data.tickets : getDefaultList(),
+      tickets: Array.isArray(data.tickets) ? data.tickets : defaultTickets,
       qrs: data.qrs || defaultProjectQrs,
     };
   } catch {
     return {
-      tickets: getDefaultList(),
+      tickets: defaultTickets,
       qrs: defaultProjectQrs,
     };
   }
@@ -544,6 +589,11 @@ function createSheet() {
   `;
   preview.insertBefore(sheet, document.querySelector(".preview-actions"));
   return sheet;
+}
+
+function showBlankSheet() {
+  const sheet = createSheet();
+  sheet.classList.add("is-empty");
 }
 
 function getSheetForTicket(index) {
@@ -617,6 +667,7 @@ function attachEditor(editor, index) {
 
   editor.querySelector("[data-field='project']").addEventListener("change", () => {
     applyProjectDefaultName(editor);
+    applyProjectDefaultTitle(editor);
     applyProjectDefaultPackage(editor);
     updateEditorSummary(editor);
     renderTicket(editors.indexOf(editor));
@@ -681,6 +732,9 @@ function addDividerBeforeControls() {
 }
 
 function createTicketFromState(state, collapsed = true) {
+  preview.querySelectorAll(".sheet.is-empty").forEach((sheet) => sheet.remove());
+  emptyState.remove();
+
   const index = editors.length;
   const editor = editorTemplate.cloneNode(true);
   const ticket = ticketTemplate.cloneNode(true);
@@ -708,6 +762,7 @@ function createTicketFromState(state, collapsed = true) {
 
 function clearCurrentList() {
   editorPanel.querySelectorAll(".ticket-form, .divider").forEach((node) => node.remove());
+  emptyState.remove();
   preview.querySelectorAll(".sheet").forEach((sheet) => sheet.remove());
   editors = [];
   tickets = [];
@@ -722,6 +777,12 @@ function loadTab(tab) {
   data.tickets.forEach((state, index) => {
     createTicketFromState(state, true);
   });
+
+  if (!data.tickets.length) {
+    editorPanel.insertBefore(emptyState, panelActions);
+    showBlankSheet();
+  }
+
   setActiveTicket(-1);
   updateSheetScale();
 }

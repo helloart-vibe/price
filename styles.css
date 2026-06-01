@@ -203,6 +203,13 @@ select {
   border-bottom: 0;
 }
 
+.empty-state {
+  margin: 18px 0 0;
+  color: #9d9d9d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .field {
   display: grid;
   gap: 8px;
@@ -674,6 +681,10 @@ select {
   height: 38px;
   transform: scaleX(-1);
   pointer-events: none;
+}
+
+.sheet.is-empty .cut-mark {
+  display: none;
 }
 
 .ticket-meta {
