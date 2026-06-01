@@ -75,6 +75,7 @@ const firstSheet = document.querySelector(".sheet");
 const editorTemplate = editors[0].cloneNode(true);
 const ticketTemplate = tickets[0].cloneNode(true);
 const addTicketButton = document.querySelector("#addTicketButton");
+const guideButton = document.querySelector("#guideButton");
 const printButton = document.querySelector("#printButton");
 const saveButton = document.querySelector("#saveButton");
 const saveListButton = document.querySelector("#saveListButton");
@@ -82,16 +83,25 @@ const resetListButton = document.querySelector("#resetListButton");
 const panelActions = document.querySelector(".panel-actions");
 const tabButtons = Array.from(document.querySelectorAll("[data-tab]"));
 const toast = document.querySelector("#toast");
+const saveGuide = document.querySelector("#saveGuide");
+const guideText = saveGuide?.querySelector("[data-guide-text]");
+const guideSpotlight = saveGuide?.querySelector("[data-guide-spotlight]");
+const guideNextButton = saveGuide?.querySelector("[data-guide-next]");
+const guideBackButton = saveGuide?.querySelector("[data-guide-back]");
+const guideSkipButton = saveGuide?.querySelector("[data-guide-skip]");
 const emptyState = document.createElement("p");
 const storagePrefix = "terem-price-list";
 const activeTabKey = `${storagePrefix}:active-tab`;
 const zyablikovoEmptyMigrationKey = `${storagePrefix}:zyablikovo-empty-v1`;
+const guideSeenKey = `${storagePrefix}:guide-seen-v1`;
 const defaultProjectQrs = Object.fromEntries(
   Object.entries(projects).map(([key, project]) => [key, project.qr]),
 );
 let activeTab = localStorage.getItem(activeTabKey) || "salaryevo";
 let toastTimer;
 let activeTicketIndex = -1;
+let guideStepIndex = 0;
+let activeGuideTarget = null;
 
 emptyState.className = "empty-state";
 emptyState.textContent = "(пока пусто)";
@@ -99,6 +109,136 @@ emptyState.textContent = "(пока пусто)";
 if (!localStorage.getItem(zyablikovoEmptyMigrationKey)) {
   localStorage.removeItem(`${storagePrefix}:zyablikovo`);
   localStorage.setItem(zyablikovoEmptyMigrationKey, "1");
+}
+
+const guideSteps = [
+  {
+    selector: ".location-tabs",
+    text: "Выберите ВК, для которого собираете ценники. У каждого ВК может быть свой сохранённый список.",
+    card: "right",
+  },
+  {
+    selector: ".ticket-form:first-of-type",
+    text: "Ценники в левой панели раскрываются и сворачиваются. В раскрытом ценнике редактируются проект, QR-код, технология, комплектация, цены, дата и инженерка.",
+    card: "right",
+    prepare: () => {
+      const firstEditor = editors[0];
+
+      if (!firstEditor) {
+        addTicket();
+        return;
+      }
+
+      firstEditor.classList.remove("collapsed");
+      updateEditorToggle(firstEditor);
+      setActiveTicket(0);
+    },
+  },
+  {
+    selector: "#addTicketButton",
+    text: "Добавьте ещё один ценник. Если ценников больше двух, автоматически появится новый лист A4.",
+    card: "right",
+  },
+  {
+    selector: "#saveListButton",
+    text: "Сохраняйте список, чтобы в следующий раз не собирать ценники заново.",
+    card: "right",
+  },
+  {
+    selector: ".preview-actions",
+    text: "Когда всё готово, распечатайте листы или сохраните их в PDF.",
+    card: "top",
+  },
+];
+
+function showSaveGuide(force = false) {
+  if (!saveGuide || (!force && localStorage.getItem(guideSeenKey))) {
+    return;
+  }
+
+  guideStepIndex = 0;
+  document.body.classList.add("has-save-guide");
+  saveGuide.classList.add("is-visible");
+  renderGuideStep();
+}
+
+function hideSaveGuide(saveSeen = true) {
+  if (!saveGuide) {
+    return;
+  }
+
+  activeGuideTarget?.classList.remove("guide-target");
+  activeGuideTarget = null;
+  document.body.classList.remove("has-save-guide");
+  saveGuide.classList.remove("is-visible");
+
+  if (saveSeen) {
+    localStorage.setItem(guideSeenKey, "1");
+  }
+}
+
+function renderGuideStep() {
+  const step = guideSteps[guideStepIndex];
+
+  if (!step) {
+    hideSaveGuide();
+    return;
+  }
+
+  step.prepare?.();
+  requestAnimationFrame(() => {
+    const target = document.querySelector(step.selector);
+
+    if (!target) {
+      guideStepIndex += 1;
+      renderGuideStep();
+      return;
+    }
+
+    activeGuideTarget?.classList.remove("guide-target");
+    activeGuideTarget = target;
+    target.classList.add("guide-target");
+
+    const rect = target.getBoundingClientRect();
+    const padding = 8;
+    const left = Math.max(8, rect.left - padding);
+    const top = Math.max(8, rect.top - padding);
+    const width = rect.width + padding * 2;
+    const height = rect.height + padding * 2;
+    const cardLeft = step.card === "right" ? rect.right + 28 : rect.left;
+    const cardTop = step.card === "top" ? rect.top - 126 : rect.top + rect.height / 2 - 48;
+
+    saveGuide.style.setProperty("--guide-left", `${left}px`);
+    saveGuide.style.setProperty("--guide-top", `${top}px`);
+    saveGuide.style.setProperty("--guide-width", `${width}px`);
+    saveGuide.style.setProperty("--guide-height", `${height}px`);
+    saveGuide.style.setProperty("--guide-radius", target.id === "saveListButton" ? "8px" : "12px");
+    saveGuide.style.setProperty("--guide-card-left", `${Math.min(window.innerWidth - 214, Math.max(24, cardLeft))}px`);
+    saveGuide.style.setProperty("--guide-card-top", `${Math.min(window.innerHeight - 160, Math.max(24, cardTop))}px`);
+    saveGuide.style.setProperty("--guide-arrow-left", `${Math.max(24, rect.left + 20)}px`);
+    saveGuide.style.setProperty("--guide-arrow-top", `${Math.max(24, rect.top - 118)}px`);
+    saveGuide.style.setProperty("--guide-arrow-transform", "scale(0)");
+
+    guideText.textContent = step.text;
+    guideBackButton.hidden = guideStepIndex === 0;
+    guideNextButton.textContent = guideStepIndex === guideSteps.length - 1 ? "Готово" : "Дальше";
+  });
+}
+
+function previousGuideStep() {
+  guideStepIndex = Math.max(0, guideStepIndex - 1);
+  renderGuideStep();
+}
+
+function nextGuideStep() {
+  guideStepIndex += 1;
+
+  if (guideStepIndex >= guideSteps.length) {
+    hideSaveGuide();
+    return;
+  }
+
+  renderGuideStep();
 }
 
 function getEditorState(editor) {
@@ -797,12 +937,28 @@ function addTicket() {
 }
 
 addTicketButton.addEventListener("click", addTicket);
+guideButton.addEventListener("click", () => showSaveGuide(true));
 saveListButton.addEventListener("click", () => {
   saveActiveTab();
+  hideSaveGuide();
   showToast("Список ценников сохранён. При следующем открытии он восстановится автоматически — добавлять заново не придётся.");
 });
 resetListButton.addEventListener("click", resetActiveTab);
-window.addEventListener("resize", updateSheetScale);
+guideNextButton?.addEventListener("click", nextGuideStep);
+guideBackButton?.addEventListener("click", previousGuideStep);
+guideSkipButton?.addEventListener("click", () => hideSaveGuide());
+saveGuide?.addEventListener("click", (event) => {
+  if (event.target === saveGuide) {
+    hideSaveGuide();
+  }
+});
+window.addEventListener("resize", () => {
+  updateSheetScale();
+
+  if (saveGuide?.classList.contains("is-visible")) {
+    renderGuideStep();
+  }
+});
 
 tabButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -823,3 +979,4 @@ saveButton.addEventListener("click", () => {
 });
 
 loadTab(activeTab);
+showSaveGuide();

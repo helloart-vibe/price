@@ -471,6 +471,146 @@ select {
   opacity: 0.86;
 }
 
+.guide-button {
+  position: fixed;
+  left: calc(300px + 24px);
+  bottom: 28px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    color 140ms ease,
+    opacity 140ms ease;
+}
+
+.guide-button span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e2e2;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.guide-button:hover {
+  color: #930038;
+}
+
+.save-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: none;
+  color: #fff;
+  pointer-events: none;
+}
+
+.save-guide.is-visible {
+  display: block;
+}
+
+.save-guide__spotlight {
+  position: fixed;
+  left: var(--guide-left, 0);
+  top: var(--guide-top, 0);
+  width: var(--guide-width, 0);
+  height: var(--guide-height, 0);
+  border-radius: var(--guide-radius, 12px);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.58);
+  pointer-events: none;
+  transition:
+    left 180ms ease,
+    top 180ms ease,
+    width 180ms ease,
+    height 180ms ease;
+}
+
+.save-guide__card {
+  position: fixed;
+  left: var(--guide-card-left, 114px);
+  top: var(--guide-card-top, auto);
+  width: 174px;
+  pointer-events: auto;
+}
+
+.save-guide__close {
+  position: absolute;
+  top: -6px;
+  right: -34px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.save-guide__text {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.save-guide__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.save-guide__actions button {
+  min-height: 28px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.save-guide__next {
+  background: #fff !important;
+  color: #930038 !important;
+}
+
+.save-guide__back[hidden] {
+  display: none;
+}
+
+.save-guide__arrow {
+  position: fixed;
+  left: var(--guide-arrow-left, 74px);
+  top: var(--guide-arrow-top, auto);
+  color: #fff;
+  transform: var(--guide-arrow-transform, none);
+  pointer-events: none;
+}
+
+body.has-save-guide {
+  cursor: default;
+}
+
+body.has-save-guide .save-guide {
+  pointer-events: auto;
+}
+
 .add-ticket-button {
   width: 224px;
   min-height: 42px;

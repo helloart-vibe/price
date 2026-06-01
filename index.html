@@ -175,6 +175,10 @@
 
       <section class="preview" aria-label="A4 макет">
         <img class="screen-logo" src="./assets/logo.svg" alt="Терем" />
+        <button class="guide-button" id="guideButton" type="button">
+          <span>?</span>
+          Смотреть подсказки
+        </button>
         <article class="sheet" aria-label="Лист A4 с двумя ценниками">
           <div class="sheet-art">
             <section class="tickets">
@@ -259,6 +263,21 @@
         </div>
       </section>
     </main>
+    <div class="save-guide" id="saveGuide" role="dialog" aria-live="polite" aria-label="Инструкция по интерфейсу">
+      <div class="save-guide__spotlight" data-guide-spotlight></div>
+      <div class="save-guide__card">
+        <button class="save-guide__close" type="button" data-guide-skip aria-label="Закрыть подсказки">×</button>
+        <div class="save-guide__text" data-guide-text></div>
+        <div class="save-guide__actions">
+          <button class="save-guide__back" type="button" data-guide-back>Назад</button>
+          <button class="save-guide__next" type="button" data-guide-next>Дальше</button>
+        </div>
+      </div>
+      <svg class="save-guide__arrow" width="72" height="120" viewBox="0 0 72 120" aria-hidden="true">
+        <path d="M60 8C20 28 13 76 58 112" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <path d="M47 111L59 113L55 101" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="./app.js"></script>
