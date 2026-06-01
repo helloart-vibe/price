@@ -454,7 +454,7 @@ select {
 .cut-mark {
   position: absolute;
   left: -30px;
-  top: calc(100mm - 19px + 20px);
+  top: calc(100mm - 19px - 30px);
   width: 29px;
   height: 38px;
   transform: scaleX(-1);

@@ -2,22 +2,27 @@ const projects = {
   "dobrynya-m2": {
     label: "Добрыня М2",
     qr: "./assets/dobrynya-m2.png",
+    defaultPackage: "Жилой дом. Утепление 200",
   },
   "ohotnik-3": {
     label: "Охотник 3",
     qr: "./assets/ohotnik-3.png",
+    defaultPackage: "Дачный стандарт",
   },
   "dobrynya-5": {
     label: "Добрыня 5",
     qr: "./assets/dobrynya-5.png",
+    defaultPackage: "Жилой дом. Утепление 200",
   },
   "vityaz-3": {
     label: "Витязь 3",
     qr: "./assets/vityaz-3.png",
+    defaultPackage: "Дачный стандарт",
   },
   "vityaz-m6": {
     label: "Витязь М6",
     qr: "./assets/vityaz-m6.png",
+    defaultPackage: "Теплый контур",
   },
 };
 
@@ -298,6 +303,17 @@ function updateEditorSummary(editor) {
   summary.textContent = projects[projectSelect.value].label;
 }
 
+function applyProjectDefaultPackage(editor) {
+  const projectSelect = editor.querySelector("[data-field='project']");
+  const packageInput = editor.querySelector("[data-field='package']");
+
+  if (!projectSelect || !packageInput) {
+    return;
+  }
+
+  packageInput.value = projects[projectSelect.value].defaultPackage;
+}
+
 function createSheet() {
   const sheet = document.createElement("article");
   sheet.className = "sheet";
@@ -349,6 +365,7 @@ function attachEditor(editor, index) {
   setEditorIndex(editor, index);
   editor.classList.toggle("collapsed", index > 0);
   updateEditorToggle(editor);
+  applyProjectDefaultPackage(editor);
 
   editor.querySelectorAll("[data-field='price'], [data-field='oldPrice']").forEach((input) => {
     input.addEventListener("input", () => {
@@ -358,6 +375,12 @@ function attachEditor(editor, index) {
 
   editor.addEventListener("input", () => renderTicket(editors.indexOf(editor)));
   editor.addEventListener("change", () => {
+    updateEditorSummary(editor);
+    renderTicket(editors.indexOf(editor));
+  });
+
+  editor.querySelector("[data-field='project']").addEventListener("change", () => {
+    applyProjectDefaultPackage(editor);
     updateEditorSummary(editor);
     renderTicket(editors.indexOf(editor));
   });
