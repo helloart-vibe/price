@@ -49,10 +49,48 @@ select {
   height: 100vh;
   flex-direction: column;
   gap: 0;
-  padding: 42px 30px 96px;
+  padding: 26px 30px 132px;
   overflow-y: auto;
   overscroll-behavior: contain;
   background: var(--sidebar);
+}
+
+.location-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 224px;
+  margin: 0 0 28px;
+  padding: 3px;
+  border-radius: 10px;
+  background: #f1f1f1;
+}
+
+.location-tab {
+  min-height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  transition:
+    background-color 140ms ease,
+    color 140ms ease,
+    opacity 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.location-tab:hover {
+  opacity: 0.72;
+}
+
+.location-tab.is-active {
+  background: #fff;
+  color: #930038;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .ticket-form {
@@ -67,8 +105,8 @@ select {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
   gap: 16px;
-  padding: 0 0 14px;
-  border-bottom: 1px solid #dedede;
+  padding: 0 0 2px;
+  border-bottom: 0;
   cursor: pointer;
   user-select: none;
 }
@@ -112,6 +150,14 @@ select {
   font-size: 24px;
   font-weight: 600;
   line-height: 1;
+  transition:
+    color 140ms ease,
+    opacity 140ms ease,
+    transform 140ms ease;
+}
+
+.form-head button:hover {
+  opacity: 0.65;
 }
 
 .delete-ticket-button {
@@ -179,12 +225,17 @@ select {
 
 .project-field {
   display: grid;
-  gap: 8px;
+  gap: 0;
   width: 224px;
-  padding-top: 10px;
+  margin-top: -2px;
+  padding-top: 0;
   font-size: 11px;
   font-weight: 500;
   line-height: 1.25;
+}
+
+.project-field > span {
+  display: none;
 }
 
 .project-card {
@@ -198,10 +249,15 @@ select {
   background: #f1f1f1;
 }
 
+.project-select-row {
+  position: relative;
+}
+
 .project-card select {
   width: 100%;
+  max-width: none;
   min-height: 24px;
-  padding: 0 32px 0 0;
+  padding: 0 58px 0 0;
   border: 0;
   background-color: transparent;
   color: var(--ink);
@@ -213,6 +269,36 @@ select {
   background-repeat: no-repeat;
   background-position: right 0 center;
   background-size: 18px 11px;
+}
+
+.project-card::after {
+  content: none;
+}
+
+.project-name-edit {
+  position: absolute;
+  left: min(calc(var(--project-name-width, 72px) + 14px), 158px);
+  top: 3px;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.78;
+  transition: opacity 140ms ease;
+}
+
+.project-name-edit:hover {
+  opacity: 0.45;
+}
+
+.project-name-edit img {
+  width: 13px;
+  height: 13px;
 }
 
 .project-title {
@@ -261,6 +347,15 @@ select {
 
 .project-card button:hover {
   opacity: 0.72;
+}
+
+.project-card .project-name-edit {
+  justify-self: auto;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .project-card input[type="file"] {
@@ -330,11 +425,46 @@ select {
   background: #d8d8d8;
 }
 
-.add-ticket-button {
+.panel-actions {
   position: fixed;
   left: 30px;
   bottom: 28px;
   z-index: 10;
+  width: 224px;
+  display: grid;
+  gap: 8px;
+}
+
+.list-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.list-actions button {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid #ead8d8;
+  border-radius: 8px;
+  background: #fff;
+  color: #777;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  transition:
+    border-color 140ms ease,
+    color 140ms ease,
+    opacity 140ms ease,
+    transform 140ms ease;
+}
+
+.list-actions button:hover {
+  border-color: #930038;
+  color: #930038;
+  opacity: 0.86;
+}
+
+.add-ticket-button {
   width: 224px;
   min-height: 42px;
   margin-top: 0;
@@ -347,17 +477,30 @@ select {
   font-weight: 400;
   line-height: 1;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition:
+    border-color 140ms ease,
+    color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
+}
+
+.add-ticket-button:hover {
+  border-color: #930038;
+  color: #930038;
+  box-shadow: 0 9px 22px rgba(147, 0, 56, 0.14);
+  transform: translateY(-1px);
 }
 
 .preview {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: var(--preview-justify, flex-start);
+  display: grid;
+  grid-template-columns: repeat(var(--sheet-columns, 2), max-content);
+  align-content: var(--preview-align-content, start);
+  align-items: start;
+  justify-content: center;
   gap: 42px 24px;
   min-width: 0;
   height: 100vh;
-  padding: 32px;
+  padding: 32px 32px 130px;
   overflow: auto;
   background-color: #f7f7f7;
   background-image: radial-gradient(#ededed 1.5px, transparent 1.5px);
@@ -385,6 +528,12 @@ select {
   cursor: pointer;
   font-size: 13px;
   font-weight: 700;
+  transition:
+    border-color 140ms ease,
+    color 140ms ease,
+    background-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
 }
 
 .print-button {
@@ -399,6 +548,22 @@ select {
   color: #777;
 }
 
+.print-button:hover,
+.save-button:hover {
+  transform: translateY(-1px);
+}
+
+.print-button:hover {
+  background: #930038;
+  box-shadow: 0 10px 24px rgba(147, 0, 56, 0.22);
+}
+
+.save-button:hover {
+  border-color: #930038;
+  color: #930038;
+  box-shadow: 0 10px 24px rgba(147, 0, 56, 0.12);
+}
+
 .sheet {
   position: relative;
   display: grid;
@@ -410,6 +575,7 @@ select {
   zoom: var(--sheet-scale, 0.8);
   transform: translateY(-20px);
   transform-origin: center;
+  justify-self: center;
 }
 
 .screen-logo {
@@ -420,6 +586,34 @@ select {
   width: 40px;
   height: 40px;
   object-fit: contain;
+}
+
+.toast {
+  position: fixed;
+  left: calc(300px + (100vw - 300px) / 2);
+  bottom: 88px;
+  z-index: 50;
+  max-width: 360px;
+  padding: 13px 18px;
+  border: 1px solid rgba(147, 0, 56, 0.18);
+  border-radius: 12px;
+  background: #fff;
+  color: #1a1a1a;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 10px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .sheet-art {
@@ -438,23 +632,38 @@ select {
 }
 
 .ticket {
+  --ticket-border-color: #dbdbdb;
+  --ticket-border-width: 1px;
   position: relative;
   width: 223mm;
   height: 100mm;
   min-height: 0;
   padding: 10.8mm;
   background:
-    repeating-linear-gradient(90deg, #dbdbdb 0 8px, transparent 8px 16px) top / 100% 1px no-repeat,
-    repeating-linear-gradient(90deg, #dbdbdb 0 8px, transparent 8px 16px) bottom / 100% 1px no-repeat,
-    repeating-linear-gradient(180deg, #dbdbdb 0 8px, transparent 8px 16px) left / 1px 100% no-repeat,
-    repeating-linear-gradient(180deg, #dbdbdb 0 8px, transparent 8px 16px) right / 1px 100% no-repeat;
+    repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) top / 100% var(--ticket-border-width) no-repeat,
+    repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) bottom / 100% var(--ticket-border-width) no-repeat,
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat,
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) right / var(--ticket-border-width) 100% no-repeat;
+}
+
+.ticket.is-active {
+  --ticket-border-color: #930038;
+  --ticket-border-width: 2px;
 }
 
 .ticket + .ticket {
   background:
-    repeating-linear-gradient(90deg, #dbdbdb 0 8px, transparent 8px 16px) bottom / 100% 1px no-repeat,
-    repeating-linear-gradient(180deg, #dbdbdb 0 8px, transparent 8px 16px) left / 1px 100% no-repeat,
-    repeating-linear-gradient(180deg, #dbdbdb 0 8px, transparent 8px 16px) right / 1px 100% no-repeat;
+    repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) bottom / 100% var(--ticket-border-width) no-repeat,
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat,
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) right / var(--ticket-border-width) 100% no-repeat;
+}
+
+.ticket + .ticket.is-active {
+  background:
+    repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) top / 100% var(--ticket-border-width) no-repeat,
+    repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) bottom / 100% var(--ticket-border-width) no-repeat,
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat,
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) right / var(--ticket-border-width) 100% no-repeat;
 }
 
 .cut-mark {
@@ -697,5 +906,10 @@ select {
   .sheet:last-child {
     break-after: auto;
     page-break-after: auto;
+  }
+
+  .ticket.is-active {
+    --ticket-border-color: #dbdbdb;
+    --ticket-border-width: 1px;
   }
 }

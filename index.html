@@ -15,19 +15,34 @@
   <body>
     <main class="workspace">
       <aside class="editor" aria-label="Редактор ценников">
+        <div class="location-tabs" role="tablist" aria-label="Площадка">
+          <button class="location-tab is-active" type="button" data-tab="salaryevo">Саларьево</button>
+          <button class="location-tab" type="button" data-tab="zyablikovo">Зябликово</button>
+        </div>
+
         <form class="ticket-form" data-ticket-editor="0">
           <h1>Ценник №1</h1>
 
           <div class="project-field">
             <span>Проект</span>
             <div class="project-card">
-              <select data-field="project">
-                <option value="dobrynya-m2">Добрыня М2</option>
-                <option value="ohotnik-3">Охотник 3</option>
-                <option value="dobrynya-5">Добрыня 5</option>
-                <option value="vityaz-3">Витязь 3</option>
-                <option value="vityaz-m6">Витязь М6</option>
-              </select>
+              <div class="project-select-row">
+                <select data-field="project">
+                  <option value="dobrynya-m2">Добрыня М2</option>
+                  <option value="ohotnik-3">Охотник 3</option>
+                  <option value="dobrynya-5">Добрыня 5</option>
+                  <option value="vityaz-3">Витязь 3</option>
+                  <option value="vityaz-m6">Витязь М6</option>
+                  <option value="barn-5">Барн 5</option>
+                  <option value="lira-4">Лира 4</option>
+                  <option value="akvarel-4">Акварель 4</option>
+                  <option value="riviera-2">Ривьера 2</option>
+                  <option value="nord-5">Норд 5</option>
+                </select>
+                <button class="project-name-edit" type="button" data-action="edit-project-name" aria-label="Переименовать проект">
+                  <img src="./assets/pencil-line-thin.svg" alt="" aria-hidden="true" />
+                </button>
+              </div>
               <label class="project-title">
                 <input data-field="title" type="text" value="Одноэтажный коттедж" />
                 <img src="./assets/pencil-line-thin.svg" alt="" aria-hidden="true" />
@@ -84,13 +99,23 @@
           <div class="project-field">
             <span>Проект</span>
             <div class="project-card">
-              <select data-field="project">
-                <option value="dobrynya-m2">Добрыня М2</option>
-                <option value="ohotnik-3">Охотник 3</option>
-                <option value="dobrynya-5">Добрыня 5</option>
-                <option value="vityaz-3" selected>Витязь 3</option>
-                <option value="vityaz-m6">Витязь М6</option>
-              </select>
+              <div class="project-select-row">
+                <select data-field="project">
+                  <option value="dobrynya-m2">Добрыня М2</option>
+                  <option value="ohotnik-3">Охотник 3</option>
+                  <option value="dobrynya-5">Добрыня 5</option>
+                  <option value="vityaz-3" selected>Витязь 3</option>
+                  <option value="vityaz-m6">Витязь М6</option>
+                  <option value="barn-5">Барн 5</option>
+                  <option value="lira-4">Лира 4</option>
+                  <option value="akvarel-4">Акварель 4</option>
+                  <option value="riviera-2">Ривьера 2</option>
+                  <option value="nord-5">Норд 5</option>
+                </select>
+                <button class="project-name-edit" type="button" data-action="edit-project-name" aria-label="Переименовать проект">
+                  <img src="./assets/pencil-line-thin.svg" alt="" aria-hidden="true" />
+                </button>
+              </div>
               <label class="project-title">
                 <input data-field="title" type="text" value="Одноэтажный коттедж" />
                 <img src="./assets/pencil-line-thin.svg" alt="" aria-hidden="true" />
@@ -139,7 +164,13 @@
           </fieldset>
         </form>
 
-        <button class="add-ticket-button" id="addTicketButton" type="button">+</button>
+        <div class="panel-actions">
+          <div class="list-actions">
+            <button id="saveListButton" type="button">сохранить список</button>
+            <button id="resetListButton" type="button">сбросить</button>
+          </div>
+          <button class="add-ticket-button" id="addTicketButton" type="button">+</button>
+        </div>
       </aside>
 
       <section class="preview" aria-label="A4 макет">
@@ -228,6 +259,7 @@
         </div>
       </section>
     </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <script src="./app.js"></script>
   </body>
