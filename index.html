@@ -139,7 +139,7 @@
           </fieldset>
         </form>
 
-        <button class="print-button" id="printButton" type="button">Печать / PDF</button>
+        <button class="add-ticket-button" id="addTicketButton" type="button">+</button>
       </aside>
 
       <section class="preview" aria-label="A4 макет">
@@ -147,8 +147,8 @@
         <article class="sheet" aria-label="Лист A4 с двумя ценниками">
           <div class="sheet-art">
             <section class="tickets">
+              <img class="cut-mark" src="./assets/cut-mark.svg" alt="" aria-hidden="true" />
               <article class="ticket" data-ticket="0">
-                <img class="cut-mark" src="./assets/cut-mark.svg" alt="" aria-hidden="true" />
                 <div class="ticket-meta">
                   <p>Технология <strong data-output="tech" contenteditable="true">Каркас</strong></p>
                   <p>
@@ -185,7 +185,6 @@
               </article>
 
               <article class="ticket" data-ticket="1">
-                <img class="cut-mark" src="./assets/cut-mark.svg" alt="" aria-hidden="true" />
                 <div class="ticket-meta">
                   <p>Технология <strong data-output="tech" contenteditable="true">Каркас</strong></p>
                   <p>
@@ -223,6 +222,10 @@
             </section>
           </div>
         </article>
+        <div class="preview-actions">
+          <button class="print-button" id="printButton" type="button">Печатать</button>
+          <button class="save-button" id="saveButton" type="button">Скачать</button>
+        </div>
       </section>
     </main>
 

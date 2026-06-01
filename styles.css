@@ -38,7 +38,7 @@ select {
 
 .workspace {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-columns: 300px minmax(0, 1fr);
   height: 100vh;
   overflow: hidden;
 }
@@ -48,8 +48,8 @@ select {
   display: flex;
   height: 100vh;
   flex-direction: column;
-  gap: 21px;
-  padding: 30px 32px 68px;
+  gap: 0;
+  padding: 42px 30px 96px;
   overflow-y: auto;
   overscroll-behavior: contain;
   background: var(--sidebar);
@@ -57,44 +57,126 @@ select {
 
 .ticket-form {
   display: grid;
-  gap: 7px;
+  gap: 8px;
   margin: 0;
+  padding: 0 0 20px;
 }
 
-.ticket-form h1,
-.ticket-form h2 {
-  margin: 0 0 18px;
-  font-size: 22px;
+.form-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px;
+  padding: 0 0 14px;
+  border-bottom: 1px solid #dedede;
+  cursor: pointer;
+  user-select: none;
+}
+
+.form-head h1,
+.form-head h2 {
+  margin: 0;
+  grid-column: 1;
+  font-size: 17px;
   font-weight: 700;
   line-height: 1.2;
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+.form-actions {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  align-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-head button {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.delete-ticket-button {
+  opacity: 0;
+  pointer-events: none;
+  color: #9d9d9d;
+  transition: opacity 140ms ease;
+}
+
+.form-head:hover .delete-ticket-button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.form-summary {
+  display: none;
+  grid-column: 1;
+  margin-top: -10px;
+  color: #9d9d9d;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.ticket-form.collapsed .form-summary {
+  display: block;
+}
+
+.form-head * {
+  cursor: pointer;
+}
+
+.ticket-form.collapsed > :not(.form-head) {
+  display: none;
+}
+
+.ticket-form.collapsed {
+  padding: 0 0 10px;
+}
+
+.ticket-form.collapsed .form-head {
+  padding: 0 0 8px;
+  border-bottom: 0;
 }
 
 .field {
   display: grid;
-  gap: 7px;
-  font-size: 12px;
+  gap: 8px;
+  font-size: 11px;
   font-weight: 500;
   line-height: 1.25;
 }
 
 .field input {
-  width: 240px;
-  min-height: 38px;
-  padding: 0 13px;
-  border: 1px solid var(--field-border);
-  border-radius: 10px;
-  background: #fff;
+  width: 224px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #f1f1f1;
   color: var(--ink);
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
 }
 
 .project-field {
   display: grid;
-  gap: 7px;
-  width: 240px;
-  font-size: 12px;
+  gap: 8px;
+  width: 224px;
+  padding-top: 10px;
+  font-size: 11px;
   font-weight: 500;
   line-height: 1.25;
 }
@@ -102,22 +184,22 @@ select {
 .project-card {
   position: relative;
   display: grid;
-  gap: 8px;
-  min-height: 116px;
-  padding: 16px 18px 15px;
-  border: 1px solid var(--field-border);
-  border-radius: 10px;
-  background: #fff;
+  gap: 9px;
+  min-height: 94px;
+  padding: 14px 14px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: #f1f1f1;
 }
 
 .project-card select {
   width: 100%;
   min-height: 24px;
-  padding: 0 38px 0 0;
+  padding: 0 32px 0 0;
   border: 0;
   background-color: transparent;
   color: var(--ink);
-  font-size: 19px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   appearance: none;
@@ -135,13 +217,13 @@ select {
 }
 
 .project-title input {
-  width: min(156px, 100%);
-  min-height: 24px;
+  width: min(148px, 100%);
+  min-height: 18px;
   padding: 0;
   border: 0;
   background: transparent;
   color: #999;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -160,14 +242,14 @@ select {
 
 .project-card button {
   justify-self: start;
-  min-height: 24px;
-  padding: 0 12px;
+  min-height: 22px;
+  padding: 0 10px;
   border: 1px solid #cfcfcf;
   border-radius: 4px;
   background: #f3f3f3;
   color: #111;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
 }
 
@@ -186,12 +268,12 @@ select {
 .price-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  width: 240px;
+  gap: 10px;
+  width: 224px;
 }
 
 .price-fields .field input {
-  width: 111px;
+  width: 107px;
 }
 
 .price-fields .field span {
@@ -201,8 +283,8 @@ select {
 .checks {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px 25px;
-  width: 240px;
+  gap: 12px 20px;
+  width: 224px;
   margin: 7px 0 0;
   padding: 0;
   border: 0;
@@ -211,7 +293,7 @@ select {
 .checks legend {
   width: 100%;
   margin-bottom: 8px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
 }
 
@@ -219,7 +301,7 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -235,37 +317,80 @@ select {
 .divider {
   display: block;
   flex: 0 0 1px;
-  width: 240px;
+  width: 224px;
   min-height: 1px;
   height: 1px;
-  margin: 18px 0 14px;
+  margin: 0 0 18px;
   background: #d8d8d8;
 }
 
-.print-button {
+.add-ticket-button {
   position: fixed;
-  left: 32px;
-  bottom: 10px;
+  left: 30px;
+  bottom: 28px;
   z-index: 10;
-  width: 240px;
-  min-height: 40px;
+  width: 224px;
+  min-height: 42px;
   margin-top: 0;
-  border: 0;
+  border: 1px solid #ead8d8;
   border-radius: 10px;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #5c5c5c;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .preview {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: var(--preview-justify, flex-start);
+  gap: 42px 24px;
   min-width: 0;
   height: 100vh;
   padding: 32px;
-  overflow: hidden;
+  overflow: auto;
+  background-color: #f7f7f7;
+  background-image: radial-gradient(#ededed 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.preview-actions {
+  position: fixed;
+  left: calc(300px + (100vw - 300px) / 2);
+  bottom: 28px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transform: translateX(-50%);
+}
+
+.print-button,
+.save-button {
+  min-width: 126px;
+  min-height: 44px;
+  padding: 0 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.print-button {
+  border: 0;
+  background: #000;
+  color: #fff;
+}
+
+.save-button {
+  border: 1px solid #ead8d8;
+  background: #fff;
+  color: #777;
 }
 
 .sheet {
@@ -275,8 +400,9 @@ select {
   width: 297mm;
   height: 210mm;
   background: var(--paper);
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.16);
-  transform: translateY(-20px) scale(0.8);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  zoom: var(--sheet-scale, 0.8);
+  transform: translateY(-20px);
   transform-origin: center;
 }
 
@@ -297,6 +423,7 @@ select {
 }
 
 .tickets {
+  position: relative;
   display: grid;
   grid-template-rows: 100mm 100mm;
   align-self: stretch;
@@ -326,8 +453,8 @@ select {
 
 .cut-mark {
   position: absolute;
-  left: -28px;
-  top: 48mm;
+  left: -30px;
+  top: calc(100mm - 19px + 20px);
   width: 29px;
   height: 38px;
   transform: scaleX(-1);
@@ -493,7 +620,7 @@ select {
 
 @media (max-width: 1480px) {
   .preview {
-    place-items: center;
+    align-items: center;
   }
 }
 
@@ -525,7 +652,7 @@ select {
 @media print {
   body {
     width: 297mm;
-    height: 210mm;
+    height: auto;
     background: #fff;
   }
 
@@ -538,7 +665,8 @@ select {
     display: none;
   }
 
-  .screen-logo {
+  .screen-logo,
+  .preview-actions {
     display: none;
   }
 
@@ -552,7 +680,16 @@ select {
   .sheet {
     width: 297mm;
     height: 210mm;
+    zoom: 1;
+    margin-top: 0;
     box-shadow: none;
     transform: none;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .sheet:last-child {
+    break-after: auto;
+    page-break-after: auto;
   }
 }
