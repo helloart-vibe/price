@@ -31,7 +31,7 @@ const projects = {
   },
   "barn-5": {
     label: "Барн 5",
-    qr: "./assets/qr-code.png",
+    qr: "./assets/barn-5.png",
     defaultPackage: "Дачный стандарт",
     defaultTitle: "Одноэтажный коттедж",
   },
