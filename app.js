@@ -386,7 +386,11 @@ function renderTicket(index) {
   ticket.querySelector("[data-output='oldPrice']").textContent = state.oldPrice;
   oldPriceRow.hidden = !state.oldPrice.trim();
   ticket.classList.toggle("has-old-price", Boolean(state.oldPrice.trim()));
-  ticket.querySelector("[data-output='date']").textContent = state.date;
+  const dateValue = state.date.trim();
+  const dateLine = ticket.querySelector(".date-line");
+  ticket.classList.toggle("has-empty-date", !dateValue);
+  dateLine.hidden = !dateValue;
+  ticket.querySelector("[data-output='date']").textContent = dateValue;
   ticket.querySelector("[data-output='engineering']").innerHTML = engineeringText[state.engineering];
   ticket.querySelector("[data-output='qr']").src = project.qr;
 

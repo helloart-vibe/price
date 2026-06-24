@@ -1,0 +1,39 @@
+{
+  "name": "terem-price-tags",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Офлайн-приложение для печати ценников Теремъ",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win portable",
+    "build:dir": "electron-builder --dir"
+  },
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "ru.terem.price-tags",
+    "productName": "Редактор ценников Теремъ",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "styles.css",
+      "app.js",
+      "assets/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": "portable",
+      "icon": "assets/favicon.ico"
+    },
+    "mac": {
+      "target": "dir",
+      "category": "public.app-category.business"
+    }
+  }
+}
