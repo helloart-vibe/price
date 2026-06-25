@@ -71,8 +71,8 @@
           </div>
 
           <label class="field">
-            <span>Дата действия</span>
-            <input data-field="date" type="text" value="28.05.2026" />
+            <span>Дата действия в кредит</span>
+            <input data-field="date" type="text" value="" maxlength="10" inputmode="numeric" placeholder="01.01.2026" />
           </label>
 
           <fieldset class="checks">
@@ -144,8 +144,8 @@
           </div>
 
           <label class="field">
-            <span>Дата действия</span>
-            <input data-field="date" type="text" value="28.05.2026" />
+            <span>Дата действия в кредит</span>
+            <input data-field="date" type="text" value="" maxlength="10" inputmode="numeric" placeholder="01.01.2026" />
           </label>
 
           <fieldset class="checks">
@@ -176,7 +176,7 @@
           <span>?</span>
           Смотреть подсказки
         </button>
-        <article class="sheet" aria-label="Лист A4 с двумя ценниками">
+        <article class="sheet" aria-label="Лист A4 с одним ценником">
           <div class="sheet-art">
             <section class="tickets">
               <img class="cut-mark" src="./assets/cut-mark.svg" alt="" aria-hidden="true" />
@@ -200,51 +200,16 @@
                 </div>
                 <p class="engineering-line">
                   <span data-output="engineering">
-                    инженерные коммуникации можно заказать дополнительно
+                    Инженерные коммуникации
+                    <span class="engineering-regular">можно заказать дополнительно</span>
                   </span>
                 </p>
-                <p class="date-line">
+                <p class="date-line" hidden>
                   Стоимость действительна при заказе в кредит до
-                  <span data-output="date" contenteditable="true">28.05.2026</span>.
+                  <span data-output="date" contenteditable="true"></span>.
                 </p>
                 <p class="side-title" data-output="title" contenteditable="true">
                   одноэтажный<br />коттедж Добрыня М2
-                </p>
-                <figure class="qr-block">
-                  <img data-output="qr" alt="QR-код проекта" />
-                  <figcaption>Узнайте о проекте больше</figcaption>
-                </figure>
-              </article>
-
-              <article class="ticket" data-ticket="1">
-                <div class="ticket-meta">
-                  <p>Технология <strong data-output="tech" contenteditable="true">Каркас</strong></p>
-                  <p>
-                    Комплектация
-                    <strong data-output="package" contenteditable="true">«Дачный стандарт»</strong>
-                  </p>
-                </div>
-                <div class="price-stack">
-                  <div class="price-line">
-                    <strong data-output="price" contenteditable="true">12 116 000</strong>
-                    <span>₽</span>
-                  </div>
-                  <div class="old-price-line" data-output="old-price-row" hidden>
-                    <strong data-output="oldPrice" contenteditable="true"></strong>
-                    <span>₽</span>
-                  </div>
-                </div>
-                <p class="engineering-line">
-                  <span data-output="engineering">
-                    инженерные коммуникации можно заказать дополнительно
-                  </span>
-                </p>
-                <p class="date-line">
-                  Стоимость действительна при заказе в кредит до
-                  <span data-output="date" contenteditable="true">28.05.2026</span>.
-                </p>
-                <p class="side-title" data-output="title" contenteditable="true">
-                  одноэтажный<br />коттедж Витязь 3
                 </p>
                 <figure class="qr-block">
                   <img data-output="qr" alt="QR-код проекта" />
