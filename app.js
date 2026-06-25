@@ -62,8 +62,8 @@ const projects = {
 };
 
 const engineeringText = {
-  included: "Входит полный пакет инженерных коммуникаций.",
-  extra: "Инженерные коммуникации можно заказать дополнительно",
+  included: "<span class=\"engineering-regular\">Входит полный пакет </span>инженерных коммуникаций",
+  extra: "Инженерные коммуникации <span class=\"engineering-regular\">можно заказать дополнительно</span>",
 };
 
 let editors = Array.from(document.querySelectorAll("[data-ticket-editor]"));
@@ -136,7 +136,7 @@ const guideSteps = [
   },
   {
     selector: "#addTicketButton",
-    text: "Добавьте ещё один ценник. Если ценников больше двух, автоматически появится новый лист A4.",
+    text: "Добавьте ещё один ценник. Каждый новый ценник автоматически появится на отдельном листе A4.",
     card: "right",
   },
   {
@@ -305,7 +305,7 @@ function createDefaultState(index = 0) {
     packageName: projects[project].defaultPackage,
     price: "12 116 000",
     oldPrice: "",
-    date: "28.05.2026",
+    date: "",
     engineering: "extra",
   };
 }
@@ -326,6 +326,19 @@ function formatPrice(value) {
 
 function formatPriceInput(input) {
   input.value = formatPrice(input.value);
+}
+
+function formatDate(value) {
+  const digits = value.replace(/\D/g, "").slice(0, 8);
+  const day = digits.slice(0, 2);
+  const month = digits.slice(2, 4);
+  const year = digits.slice(4, 8);
+
+  return [day, month, year].filter(Boolean).join(".");
+}
+
+function formatDateInput(input) {
+  input.value = formatDate(input.value);
 }
 
 function escapeHtml(value) {
@@ -402,9 +415,9 @@ function fitText(ticket) {
     [
       { element: ticket.querySelector(".ticket-meta"), max: 15, min: 12 },
       { element: ticket.querySelector(".side-title"), max: 15, min: 10 },
-      { element: ticket.querySelector(".engineering-line"), max: 13, min: 9 },
+      { element: ticket.querySelector(".engineering-line"), max: 15, min: 10 },
       { element: ticket.querySelector(".date-line"), max: 13, min: 9 },
-      { element: ticket.querySelector(".price-line strong"), max: 85, min: 52 },
+      { element: ticket.querySelector(".price-line strong"), max: 89, min: 52 },
       { element: ticket.querySelector(".old-price-line strong"), max: 52, min: 32 },
     ].forEach(({ element, max, min }) => {
       if (!element) {
@@ -538,7 +551,7 @@ function normalizeEditorDividers() {
 }
 
 function reflowTickets() {
-  const neededSheets = Math.ceil(tickets.length / 2);
+  const neededSheets = tickets.length;
 
   while (document.querySelectorAll(".sheet").length < neededSheets) {
     createSheet();
@@ -740,7 +753,7 @@ function showToast(message) {
 function createSheet() {
   const sheet = document.createElement("article");
   sheet.className = "sheet";
-  sheet.setAttribute("aria-label", "Лист A4 с двумя ценниками");
+  sheet.setAttribute("aria-label", "Лист A4 с одним ценником");
   sheet.innerHTML = `
     <div class="sheet-art">
       <section class="tickets">
@@ -758,7 +771,7 @@ function showBlankSheet() {
 }
 
 function getSheetForTicket(index) {
-  const sheetIndex = Math.floor(index / 2);
+  const sheetIndex = index;
   const sheets = Array.from(document.querySelectorAll(".sheet"));
 
   while (sheets.length <= sheetIndex) {
@@ -796,6 +809,10 @@ function attachEditor(editor, index) {
     input.addEventListener("input", () => {
       formatPriceInput(input);
     });
+  });
+
+  editor.querySelector("[data-field='date']").addEventListener("input", (event) => {
+    formatDateInput(event.currentTarget);
   });
 
   editor.addEventListener("input", () => {
