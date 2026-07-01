@@ -21,7 +21,7 @@ const projects = {
     label: "Витязь 3",
     qr: "./assets/vityaz-3.png",
     defaultPackage: "Дачный стандарт",
-    defaultTitle: "Одноэтажный коттедж",
+    defaultTitle: "Дом-баня",
   },
   "vityaz-m6": {
     label: "Витязь М6",
