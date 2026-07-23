@@ -59,6 +59,170 @@ const projects = {
     defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
+  "zyablikovo-dobrynya-3": {
+    label: "Добрыня 3",
+    qr: "./assets/zyablikovo-dobrynya-3.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-terem-barn-6": {
+    label: "Терем-Барн 6",
+    qr: "./assets/zyablikovo-terem-barn-6.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-imperator-3": {
+    label: "Император 3",
+    qr: "./assets/zyablikovo-imperator-3.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
+  },
+  "zyablikovo-riviera-3": {
+    label: "Ривьера 3",
+    qr: "./assets/zyablikovo-riviera-3.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
+  },
+  "zyablikovo-nord-6": {
+    label: "Норд 6",
+    qr: "./assets/zyablikovo-nord-6.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
+  },
+  "zyablikovo-nord-m3": {
+    label: "Норд М 3",
+    qr: "./assets/zyablikovo-nord-m3.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
+  },
+  "zyablikovo-vityaz-2": {
+    label: "Витязь 2",
+    qr: "./assets/zyablikovo-vityaz-2.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-vityaz-m6": {
+    label: "Витязь М 6",
+    qr: "./assets/zyablikovo-vityaz-m6.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-vesna-m4": {
+    label: "Весна М 4",
+    qr: "./assets/zyablikovo-vesna-m4.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-pesnya-4": {
+    label: "Песня 4",
+    qr: "./assets/zyablikovo-pesnya-4.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-akvarel-5": {
+    label: "Акварель 5",
+    qr: "./assets/zyablikovo-akvarel-5.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-traditsiya-12": {
+    label: "Традиция 12",
+    qr: "./assets/zyablikovo-traditsiya-12.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
+  },
+  "zyablikovo-bogatyr-lk-2": {
+    label: "Богатырь ЛК 2",
+    qr: "./assets/zyablikovo-bogatyr-lk-2.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
+  },
+  "zyablikovo-ohotnik-1": {
+    label: "Охотник 1",
+    qr: "./assets/zyablikovo-ohotnik-1.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-ohotnik-3": {
+    label: "Охотник 3",
+    qr: "./assets/zyablikovo-ohotnik-3.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-barn-m5": {
+    label: "Барн М 5",
+    qr: "./assets/zyablikovo-barn-m5.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Одноэтажный коттедж",
+  },
+  "zyablikovo-varyag-5": {
+    label: "Варяг 5",
+    qr: "./assets/zyablikovo-varyag-5.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
+  },
+  "zyablikovo-varyag-m2": {
+    label: "Варяг М 2",
+    qr: "./assets/zyablikovo-varyag-m2.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Двухэтажный коттедж",
+  },
+  "zyablikovo-banya": {
+    label: "Баня",
+    qr: "./assets/zyablikovo-banya.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Баня 5х4",
+  },
+  "zyablikovo-banya-lada-2": {
+    label: "Баня Лада 2",
+    qr: "./assets/zyablikovo-banya-lada-2.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Дом-баня",
+  },
+  "zyablikovo-banya-sm": {
+    label: "Баня СМ",
+    qr: "./assets/zyablikovo-banya-sm.png",
+    defaultPackage: "Дачный стандарт",
+    defaultTitle: "Дом-баня",
+  },
+};
+
+const projectTabs = {
+  salaryevo: [
+    "dobrynya-m2",
+    "ohotnik-3",
+    "dobrynya-5",
+    "vityaz-3",
+    "vityaz-m6",
+    "barn-5",
+    "lira-4",
+    "akvarel-4",
+    "riviera-2",
+    "nord-5",
+  ],
+  zyablikovo: [
+    "zyablikovo-dobrynya-3",
+    "zyablikovo-imperator-3",
+    "zyablikovo-riviera-3",
+    "zyablikovo-nord-6",
+    "zyablikovo-nord-m3",
+    "zyablikovo-vityaz-2",
+    "zyablikovo-vityaz-m6",
+    "zyablikovo-vesna-m4",
+    "zyablikovo-pesnya-4",
+    "zyablikovo-akvarel-5",
+    "zyablikovo-traditsiya-12",
+    "zyablikovo-bogatyr-lk-2",
+    "zyablikovo-ohotnik-1",
+    "zyablikovo-ohotnik-3",
+    "zyablikovo-barn-m5",
+    "zyablikovo-varyag-5",
+    "zyablikovo-varyag-m2",
+    "zyablikovo-banya",
+    "zyablikovo-banya-lada-2",
+    "zyablikovo-banya-sm",
+    "zyablikovo-terem-barn-6",
+  ],
 };
 
 const engineeringText = {
@@ -92,7 +256,8 @@ const guideSkipButton = saveGuide?.querySelector("[data-guide-skip]");
 const emptyState = document.createElement("p");
 const storagePrefix = "terem-price-list";
 const activeTabKey = `${storagePrefix}:active-tab`;
-const zyablikovoEmptyMigrationKey = `${storagePrefix}:zyablikovo-empty-v1`;
+const zyablikovoDefaultsMigrationKey = `${storagePrefix}:zyablikovo-defaults-v1`;
+const zyablikovoBarnOrderMigrationKey = `${storagePrefix}:zyablikovo-barn-order-v1`;
 const guideSeenKey = `${storagePrefix}:guide-seen-v1`;
 const defaultProjectQrs = Object.fromEntries(
   Object.entries(projects).map(([key, project]) => [key, project.qr]),
@@ -105,11 +270,6 @@ let activeGuideTarget = null;
 
 emptyState.className = "empty-state";
 emptyState.textContent = "(пока пусто)";
-
-if (!localStorage.getItem(zyablikovoEmptyMigrationKey)) {
-  localStorage.removeItem(`${storagePrefix}:zyablikovo`);
-  localStorage.setItem(zyablikovoEmptyMigrationKey, "1");
-}
 
 const guideSteps = [
   {
@@ -272,13 +432,50 @@ function getEditorState(editor) {
   };
 }
 
+function getProjectKeys(tab = activeTab) {
+  return projectTabs[tab] || projectTabs.salaryevo;
+}
+
+function getFallbackProject(tab = activeTab) {
+  return getProjectKeys(tab)[0];
+}
+
+function isProjectInTab(projectKey, tab = activeTab) {
+  return getProjectKeys(tab).includes(projectKey);
+}
+
+function normalizeProject(projectKey, tab = activeTab) {
+  return projects[projectKey] && isProjectInTab(projectKey, tab) ? projectKey : getFallbackProject(tab);
+}
+
+function populateProjectSelect(editor, selectedProject = getFallbackProject(), tab = activeTab) {
+  const projectSelect = editor.querySelector("[data-field='project']");
+
+  if (!projectSelect) {
+    return selectedProject;
+  }
+
+  const projectKey = normalizeProject(selectedProject, tab);
+  projectSelect.innerHTML = "";
+
+  getProjectKeys(tab).forEach((key) => {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = projects[key].label;
+    projectSelect.append(option);
+  });
+
+  projectSelect.value = projectKey;
+  return projectKey;
+}
+
 function setEditorState(editor, state) {
-  editor.querySelector("[data-field='project']").value = state.project;
+  const project = populateProjectSelect(editor, state.project, activeTab);
   editor.querySelector("[data-field='title']").value =
-    state.title === "Одноэтажный коттедж" && projects[state.project].defaultTitle !== "Одноэтажный коттедж"
-      ? projects[state.project].defaultTitle
+    state.title === "Одноэтажный коттедж" && projects[project].defaultTitle !== "Одноэтажный коттедж"
+      ? projects[project].defaultTitle
       : state.title;
-  setProjectName(editor, state.projectName || projects[state.project].label);
+  setProjectName(editor, state.projectName || projects[project].label);
   editor.querySelector("[data-field='tech']").value = state.tech;
   editor.querySelector("[data-field='package']").value = state.packageName;
   editor.querySelector("[data-field='price']").value = state.price;
@@ -294,8 +491,9 @@ function setEditorState(editor, state) {
   }
 }
 
-function createDefaultState(index = 0) {
-  const project = index === 1 ? "vityaz-3" : "dobrynya-m2";
+function createDefaultState(index = 0, tab = activeTab) {
+  const defaultProjects = getProjectKeys(tab);
+  const project = defaultProjects[index] || defaultProjects[0];
 
   return {
     project,
@@ -368,17 +566,21 @@ function makeTwoLineTitle(title, projectLabel) {
 
 function getProjectName(editor) {
   const projectSelect = editor.querySelector("[data-field='project']");
-  return editor.dataset.projectName || projects[projectSelect.value].label;
+  const project = normalizeProject(projectSelect.value);
+  return editor.dataset.projectName || projects[project].label;
 }
 
 function setProjectName(editor, name) {
   const projectSelect = editor.querySelector("[data-field='project']");
-  const cleanName = name.trim() || projects[projectSelect.value].label;
+  const project = normalizeProject(projectSelect.value);
+  const cleanName = name.trim() || projects[project].label;
 
   editor.dataset.projectName = cleanName;
-  projectSelect.selectedOptions[0].textContent = cleanName;
+  if (projectSelect.selectedOptions[0]) {
+    projectSelect.selectedOptions[0].textContent = cleanName;
+  }
   requestAnimationFrame(() => {
-    const width = projectSelect.selectedOptions[0].textContent.length * 7.2;
+    const width = cleanName.length * 7.2;
     editor.style.setProperty("--project-name-width", `${Math.min(width, 150)}px`);
   });
 }
@@ -387,7 +589,8 @@ function renderTicket(index) {
   const editor = editors[index];
   const ticket = tickets[index];
   const state = getEditorState(editor);
-  const project = projects[state.project];
+  const projectKey = normalizeProject(state.project);
+  const project = projects[projectKey];
 
   ticket.querySelector("[data-output='title']").innerHTML = renderMultiline(
     makeTwoLineTitle(state.title, state.projectName || project.label),
@@ -628,7 +831,7 @@ function applyProjectDefaultPackage(editor) {
     return;
   }
 
-  packageInput.value = projects[projectSelect.value].defaultPackage;
+  packageInput.value = projects[normalizeProject(projectSelect.value)].defaultPackage;
 }
 
 function applyProjectDefaultName(editor) {
@@ -638,7 +841,7 @@ function applyProjectDefaultName(editor) {
     return;
   }
 
-  setProjectName(editor, projects[projectSelect.value].label);
+  setProjectName(editor, projects[normalizeProject(projectSelect.value)].label);
 }
 
 function applyProjectDefaultTitle(editor) {
@@ -649,7 +852,7 @@ function applyProjectDefaultTitle(editor) {
     return;
   }
 
-  titleInput.value = projects[projectSelect.value].defaultTitle;
+  titleInput.value = projects[normalizeProject(projectSelect.value)].defaultTitle;
 }
 
 function getStorageKey(tab = activeTab) {
@@ -669,11 +872,7 @@ function applyProjectQrs(qrs = defaultProjectQrs) {
 }
 
 function getDefaultList(tab = activeTab) {
-  if (tab === "zyablikovo") {
-    return [];
-  }
-
-  return [createDefaultState(0), createDefaultState(1)];
+  return [createDefaultState(0, tab), createDefaultState(1, tab)];
 }
 
 function saveActiveTab() {
@@ -719,9 +918,56 @@ function loadStoredTab(tab) {
 
   try {
     const data = JSON.parse(raw);
+    const shouldRestoreZyablikovoDefaults =
+      tab === "zyablikovo" &&
+      !localStorage.getItem(zyablikovoDefaultsMigrationKey) &&
+      Array.isArray(data.tickets) &&
+      !data.tickets.length;
+
+    if (shouldRestoreZyablikovoDefaults) {
+      localStorage.setItem(zyablikovoDefaultsMigrationKey, "1");
+
+      return {
+        tickets: defaultTickets,
+        qrs: data.qrs || defaultProjectQrs,
+      };
+    }
+
+    const shouldReplaceOldZyablikovoDefaults =
+      tab === "zyablikovo" &&
+      !localStorage.getItem(zyablikovoBarnOrderMigrationKey) &&
+      Array.isArray(data.tickets) &&
+      data.tickets.length === 2 &&
+      data.tickets[0]?.project === "zyablikovo-dobrynya-3" &&
+      data.tickets[1]?.project === "zyablikovo-terem-barn-6";
+
+    if (shouldReplaceOldZyablikovoDefaults) {
+      localStorage.setItem(zyablikovoBarnOrderMigrationKey, "1");
+
+      return {
+        tickets: defaultTickets,
+        qrs: data.qrs || defaultProjectQrs,
+      };
+    }
+
+    if (tab === "zyablikovo" && !localStorage.getItem(zyablikovoBarnOrderMigrationKey)) {
+      localStorage.setItem(zyablikovoBarnOrderMigrationKey, "1");
+    }
+
+    const tickets = Array.isArray(data.tickets)
+      ? data.tickets.map((state, index) => {
+          const project = normalizeProject(state.project, tab);
+
+          if (project === state.project) {
+            return state;
+          }
+
+          return createDefaultState(index, tab);
+        })
+      : defaultTickets;
 
     return {
-      tickets: Array.isArray(data.tickets) ? data.tickets : defaultTickets,
+      tickets,
       qrs: data.qrs || defaultProjectQrs,
     };
   } catch {
@@ -802,6 +1048,7 @@ function updateSheetScale() {
 function attachEditor(editor, index) {
   setEditorIndex(editor, index);
   editor.classList.toggle("collapsed", index > 0);
+  populateProjectSelect(editor);
   updateEditorToggle(editor);
   applyProjectDefaultPackage(editor);
 
@@ -876,7 +1123,7 @@ function attachEditor(editor, index) {
       return;
     }
 
-    const selectedProject = editor.querySelector("[data-field='project']").value;
+    const selectedProject = normalizeProject(editor.querySelector("[data-field='project']").value);
     const reader = new FileReader();
 
     reader.addEventListener("load", () => {
