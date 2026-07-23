@@ -759,7 +759,8 @@ body.has-save-guide .save-guide {
 .sheet {
   position: relative;
   display: grid;
-  place-items: center;
+  align-items: start;
+  justify-items: end;
   width: 297mm;
   height: 210mm;
   background: var(--paper);
