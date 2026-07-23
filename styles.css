@@ -763,6 +763,7 @@ body.has-save-guide .save-guide {
   justify-items: end;
   width: 297mm;
   height: 210mm;
+  overflow: hidden;
   background: var(--paper);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
   zoom: var(--sheet-scale, 0.8);
@@ -813,6 +814,7 @@ body.has-save-guide .save-guide {
   display: grid;
   width: 250mm;
   height: 120mm;
+  transform: translate(5mm, -5mm);
 }
 
 .tickets {
@@ -833,10 +835,8 @@ body.has-save-guide .save-guide {
   min-height: 0;
   padding: 15mm;
   background:
-    repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) top / 100% var(--ticket-border-width) no-repeat,
     repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) bottom / 100% var(--ticket-border-width) no-repeat,
-    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat,
-    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) right / var(--ticket-border-width) 100% no-repeat;
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat;
 }
 
 .ticket.is-active {
@@ -847,16 +847,13 @@ body.has-save-guide .save-guide {
 .ticket + .ticket {
   background:
     repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) bottom / 100% var(--ticket-border-width) no-repeat,
-    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat,
-    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) right / var(--ticket-border-width) 100% no-repeat;
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat;
 }
 
 .ticket + .ticket.is-active {
   background:
-    repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) top / 100% var(--ticket-border-width) no-repeat,
     repeating-linear-gradient(90deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) bottom / 100% var(--ticket-border-width) no-repeat,
-    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat,
-    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) right / var(--ticket-border-width) 100% no-repeat;
+    repeating-linear-gradient(180deg, var(--ticket-border-color) 0 8px, transparent 8px 16px) left / var(--ticket-border-width) 100% no-repeat;
 }
 
 .cut-mark {
