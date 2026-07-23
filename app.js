@@ -168,10 +168,10 @@ const projects = {
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-banya": {
-    label: "Баня",
+    label: "Баня 5х4",
     qr: "./assets/zyablikovo-banya.png",
     defaultPackage: "Дачный стандарт",
-    defaultTitle: "Баня 5х4",
+    defaultTitle: "",
   },
   "zyablikovo-banya-lada-2": {
     label: "Баня Лада 2",
@@ -472,9 +472,11 @@ function populateProjectSelect(editor, selectedProject = getFallbackProject(), t
 function setEditorState(editor, state) {
   const project = populateProjectSelect(editor, state.project, activeTab);
   editor.querySelector("[data-field='title']").value =
-    state.title === "Одноэтажный коттедж" && projects[project].defaultTitle !== "Одноэтажный коттедж"
-      ? projects[project].defaultTitle
-      : state.title;
+    projects[project].defaultTitle === ""
+      ? ""
+      : state.title === "Одноэтажный коттедж" && projects[project].defaultTitle !== "Одноэтажный коттедж"
+        ? projects[project].defaultTitle
+        : state.title;
   setProjectName(editor, state.projectName || projects[project].label);
   editor.querySelector("[data-field='tech']").value = state.tech;
   editor.querySelector("[data-field='package']").value = state.packageName;
@@ -561,7 +563,9 @@ function renderMultiline(value) {
 }
 
 function makeTwoLineTitle(title, projectLabel) {
-  return `${title.trim() || "Одноэтажный коттедж"}\n${projectLabel}`;
+  const cleanTitle = title.trim();
+
+  return cleanTitle ? `${cleanTitle}\n${projectLabel}` : projectLabel;
 }
 
 function getProjectName(editor) {
