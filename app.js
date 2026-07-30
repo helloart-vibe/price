@@ -26,13 +26,13 @@ const projects = {
   "vityaz-m6": {
     label: "Витязь М6",
     qr: "./assets/vityaz-m6.png",
-    defaultPackage: "Теплый контур",
+    defaultPackage: "Комфорт",
     defaultTitle: "Одноэтажный коттедж",
   },
   "barn-5": {
-    label: "Барн 5",
+    label: "Барн М5",
     qr: "./assets/barn-5.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
   "lira-4": {
@@ -62,37 +62,37 @@ const projects = {
   "zyablikovo-dobrynya-3": {
     label: "Добрыня 3",
     qr: "./assets/zyablikovo-dobrynya-3.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
   "zyablikovo-terem-barn-6": {
     label: "Терем-Барн 6",
     qr: "./assets/zyablikovo-terem-barn-6.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
   "zyablikovo-imperator-3": {
     label: "Император 3",
     qr: "./assets/zyablikovo-imperator-3.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-riviera-3": {
     label: "Ривьера 3",
     qr: "./assets/zyablikovo-riviera-3.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-nord-6": {
     label: "Норд 6",
     qr: "./assets/zyablikovo-nord-6.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-nord-m3": {
     label: "Норд М 3",
     qr: "./assets/zyablikovo-nord-m3.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-vityaz-2": {
@@ -110,31 +110,31 @@ const projects = {
   "zyablikovo-vesna-m4": {
     label: "Весна М 4",
     qr: "./assets/zyablikovo-vesna-m4.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Комфорт",
     defaultTitle: "Одноэтажный коттедж",
   },
   "zyablikovo-pesnya-4": {
     label: "Песня 4",
     qr: "./assets/zyablikovo-pesnya-4.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
   "zyablikovo-akvarel-5": {
     label: "Акварель 5",
     qr: "./assets/zyablikovo-akvarel-5.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
   "zyablikovo-traditsiya-12": {
     label: "Традиция 12",
     qr: "./assets/zyablikovo-traditsiya-12.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-bogatyr-lk-2": {
     label: "Богатырь ЛК 2",
     qr: "./assets/zyablikovo-bogatyr-lk-2.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-ohotnik-1": {
@@ -158,31 +158,31 @@ const projects = {
   "zyablikovo-varyag-5": {
     label: "Варяг 5",
     qr: "./assets/zyablikovo-varyag-5.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-varyag-m2": {
     label: "Варяг М 2",
     qr: "./assets/zyablikovo-varyag-m2.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Двухэтажный коттедж",
   },
   "zyablikovo-banya": {
     label: "Баня 5х4",
     qr: "./assets/zyablikovo-banya.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Комфорт +",
     defaultTitle: "",
   },
   "zyablikovo-banya-lada-2": {
     label: "Баня Лада 2",
     qr: "./assets/zyablikovo-banya-lada-2.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Комфорт +",
     defaultTitle: "Дом-баня",
   },
   "zyablikovo-banya-sm": {
     label: "Баня СМ",
     qr: "./assets/zyablikovo-banya-sm.png",
-    defaultPackage: "Дачный стандарт",
+    defaultPackage: "Комфорт +",
     defaultTitle: "Дом-баня",
   },
 };
@@ -879,6 +879,38 @@ function getDefaultList(tab = activeTab) {
   return [createDefaultState(0, tab), createDefaultState(1, tab)];
 }
 
+function normalizeStoredState(state, index, tab) {
+  const project = normalizeProject(state.project, tab);
+
+  if (project !== state.project) {
+    return createDefaultState(index, tab);
+  }
+
+  let nextState = state;
+
+  if (project === "barn-5" && state.projectName === "Барн 5") {
+    nextState = {
+      ...nextState,
+      projectName: projects[project].label,
+    };
+  }
+
+  const defaultPackage = projects[project].defaultPackage;
+  const wasOldDefaultPackage =
+    (tab === "zyablikovo" && state.packageName === "Дачный стандарт" && defaultPackage !== "Дачный стандарт") ||
+    (project === "barn-5" && state.packageName === "Дачный стандарт") ||
+    (project === "vityaz-m6" && state.packageName === "Теплый контур");
+
+  if (wasOldDefaultPackage) {
+    nextState = {
+      ...nextState,
+      packageName: defaultPackage,
+    };
+  }
+
+  return nextState;
+}
+
 function saveActiveTab() {
   const data = {
     tickets: editors.map(getEditorState),
@@ -959,15 +991,7 @@ function loadStoredTab(tab) {
     }
 
     const tickets = Array.isArray(data.tickets)
-      ? data.tickets.map((state, index) => {
-          const project = normalizeProject(state.project, tab);
-
-          if (project === state.project) {
-            return state;
-          }
-
-          return createDefaultState(index, tab);
-        })
+      ? data.tickets.map((state, index) => normalizeStoredState(state, index, tab))
       : defaultTickets;
 
     return {
