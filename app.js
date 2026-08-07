@@ -1,7 +1,7 @@
 const projects = {
   "dobrynya-m2": {
     label: "Добрыня М2",
-    qr: "./assets/dobrynya-m2.png",
+    qr: "./assets/dobrynya-m2.png?v=20260807-qr-2",
     defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
@@ -25,7 +25,7 @@ const projects = {
   },
   "vityaz-m6": {
     label: "Витязь М6",
-    qr: "./assets/vityaz-m6.png",
+    qr: "./assets/vityaz-m6.png?v=20260807-qr-2",
     defaultPackage: "Комфорт",
     defaultTitle: "Одноэтажный коттедж",
   },
@@ -103,7 +103,7 @@ const projects = {
   },
   "zyablikovo-vityaz-m6": {
     label: "Витязь М 6",
-    qr: "./assets/zyablikovo-vityaz-m6.png",
+    qr: "./assets/zyablikovo-vityaz-m6.png?v=20260807-qr-2",
     defaultPackage: "Дачный стандарт",
     defaultTitle: "Одноэтажный коттедж",
   },
@@ -115,7 +115,7 @@ const projects = {
   },
   "zyablikovo-pesnya-4": {
     label: "Песня 4",
-    qr: "./assets/zyablikovo-pesnya-4.png",
+    qr: "./assets/zyablikovo-pesnya-4.png?v=20260807-qr-2",
     defaultPackage: "Жилой дом. Утепление 200",
     defaultTitle: "Одноэтажный коттедж",
   },
